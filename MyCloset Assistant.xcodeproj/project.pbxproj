@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		239697F229E5FBB9008A5754 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 239697F129E5FBB9008A5754 /* Secrets.plist */; };
 		52BAFC8429E512FC0013A991 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAFC8329E512FC0013A991 /* AppDelegate.swift */; };
 		52BAFC8629E512FC0013A991 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAFC8529E512FC0013A991 /* SceneDelegate.swift */; };
 		52BAFC8829E512FC0013A991 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAFC8729E512FC0013A991 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		239697F129E5FBB9008A5754 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		52BAFC8029E512FC0013A991 /* MyCloset Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyCloset Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BAFC8329E512FC0013A991 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52BAFC8529E512FC0013A991 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				52BAFC8C29E512FC0013A991 /* Assets.xcassets */,
 				52BAFC8E29E512FC0013A991 /* LaunchScreen.storyboard */,
 				52BAFC9129E512FC0013A991 /* Info.plist */,
+				239697F129E5FBB9008A5754 /* Secrets.plist */,
 			);
 			path = "MyCloset Assistant";
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239697F229E5FBB9008A5754 /* Secrets.plist in Resources */,
 				52BAFC9029E512FC0013A991 /* LaunchScreen.storyboard in Resources */,
 				52BAFC8D29E512FC0013A991 /* Assets.xcassets in Resources */,
 				52BAFC8B29E512FC0013A991 /* Main.storyboard in Resources */,
