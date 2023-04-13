@@ -6,38 +6,18 @@
 //
 
 import Foundation
+import ParseSwift
 
-enum Brand: Encodable, Decodable, Equatable, CaseIterable {
+struct Brand: ParseObject {
+    
+    // Custom fields
+    var name: String?
+    
+    // Required for ParseObject
+    var originalData: Data?
+    var objectId: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+    var ACL: ParseSwift.ParseACL?
 
-    static var allCases: [Brand] {
-        return [.adidas, .hAndM, .levis]
-    }
-    
-    case adidas
-    case hAndM
-    case levis
-    
-    // TODO: Add more brands
-    
-    case other(brand: String)
-}
-
-extension Brand: CustomStringConvertible {
-    
-    var description: String {
-        switch self {
-        case .adidas:
-            return "Adidas"
-        case .hAndM:
-            return "H&M"
-        case .levis:
-            return "Levi's"
-        case .other(let brand):
-            guard !brand.isEmpty else {
-                return ""
-            }
-            return brand
-        }
-    }
-    
 }
