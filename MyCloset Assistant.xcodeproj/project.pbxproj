@@ -10,7 +10,7 @@
 		239697F229E5FBB9008A5754 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 239697F129E5FBB9008A5754 /* Secrets.plist */; };
 		52BAFC8429E512FC0013A991 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAFC8329E512FC0013A991 /* AppDelegate.swift */; };
 		52BAFC8629E512FC0013A991 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAFC8529E512FC0013A991 /* SceneDelegate.swift */; };
-		52BAFC8829E512FC0013A991 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAFC8729E512FC0013A991 /* ViewController.swift */; };
+		52BAFC8829E512FC0013A991 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAFC8729E512FC0013A991 /* LoginView.swift */; };
 		52BAFC8B29E512FC0013A991 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BAFC8929E512FC0013A991 /* Main.storyboard */; };
 		52BAFC8D29E512FC0013A991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52BAFC8C29E512FC0013A991 /* Assets.xcassets */; };
 		52BAFC9029E512FC0013A991 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BAFC8E29E512FC0013A991 /* LaunchScreen.storyboard */; };
@@ -23,6 +23,7 @@
 		52C7374A29E612EB00266ADE /* ClothingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374929E612EB00266ADE /* ClothingItem.swift */; };
 		52C7374C29E6148000266ADE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374B29E6148000266ADE /* Category.swift */; };
 		52C7374E29E6522A00266ADE /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374D29E6522A00266ADE /* Brand.swift */; };
+		52C7375029E8A12100266ADE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374F29E8A12100266ADE /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,7 @@
 		52BAFC8029E512FC0013A991 /* MyCloset Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyCloset Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BAFC8329E512FC0013A991 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52BAFC8529E512FC0013A991 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		52BAFC8729E512FC0013A991 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		52BAFC8729E512FC0013A991 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		52BAFC8A29E512FC0013A991 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52BAFC8C29E512FC0013A991 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52BAFC8F29E512FC0013A991 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -41,6 +42,7 @@
 		52C7374929E612EB00266ADE /* ClothingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItem.swift; sourceTree = "<group>"; };
 		52C7374B29E6148000266ADE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		52C7374D29E6522A00266ADE /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		52C7374F29E8A12100266ADE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,8 @@
 		52BAFCA029E514900013A991 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				52BAFC8729E512FC0013A991 /* ViewController.swift */,
+				52BAFC8729E512FC0013A991 /* LoginView.swift */,
+				52C7374F29E8A12100266ADE /* RegisterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,8 +196,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C7374829E6113100266ADE /* Gender.swift in Sources */,
+				52C7375029E8A12100266ADE /* RegisterView.swift in Sources */,
 				52C7374E29E6522A00266ADE /* Brand.swift in Sources */,
-				52BAFC8829E512FC0013A991 /* ViewController.swift in Sources */,
+				52BAFC8829E512FC0013A991 /* LoginView.swift in Sources */,
 				52C7374429E5F58100266ADE /* Secrets.swift in Sources */,
 				52BAFC8429E512FC0013A991 /* AppDelegate.swift in Sources */,
 				52C7374629E610C100266ADE /* User.swift in Sources */,
