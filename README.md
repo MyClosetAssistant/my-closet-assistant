@@ -83,8 +83,50 @@ TODO: Add schema
 This section will be completed in Unit 9
 -->
 
-<!--
-TODO: Add models
 ## Models
-[Add table of models]
--->
+### Gender
+Variant name|
+---|
+male|
+female|
+other|
+
+## Category
+Variant name|
+---|
+top|
+bottom|
+shoe|
+accessory|
+other|
+
+## Brand
+Variant name|
+---|
+adidas|
+hAndM|
+...
+levis|
+other|
+
+## ClothingItem
+Field name|Field type
+---|---
+name|`String`
+categories|`[Category]`
+imageFile|`ParseFile`
+brand|`Brand`
+size|`String`
+notes|`String?`
+...|
+
+## User
+Field name|Field type
+---|---
+gender|`Gender`
+closet|`[ClothingItem]`
+...|
+username|`String`
+email|`String`
+password|`String`
+...|
