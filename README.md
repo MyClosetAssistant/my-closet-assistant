@@ -36,31 +36,42 @@ MyCloset Assistant is an app that helps users categorize andstore their closet i
 
 ### 2. Screen Archetypes
 
-* Login / Register
-   * Register for a new account.
-   * Login to their account.
-* Categories (Tab View)
-   * Button grid with different categories to choose from
-* Item detail (View)
-   * A detailed view of a clothing item
-* Upload (Tab View)
-   * Upload photos of clothes
+* LoginView
+   * Fields to login to an existing account.
+   * Button to login with fields provided. (shows CategoriesTab)
+   * Button to register for a new account. (shows RegisterView)
+* RegisterView
+   * Fields to register for a new account.
+   * Button to register with fields provided. (shows CategoriesTab)
+* CategoriesTab (tab of HomeViewNavigation)
+   * Grid of buttons with different categories (shows ResultsView)
+   * Button to upload a new item
+   * Tabs with self and brands (Self, BrandsTab)
+* BrandsTab (tab of HomeViewNavigation)
+   * Grid of buttons with different brands (shows ResultsView)
+   * Tabs with self and brands (Self, BrandsTab)
+* UploadView
+   * Fields to upload a new ClothingItem
+   * Button to finish uploading (pops off self)
+* DetailView
+   * Information for a selected ClothingItem
+   * Back button (pops off self)
+   * Delete item button (pops off self)
+* ResultsView
+   * Grid of images from each ClothingItem in closet (shows DetailView)
+   * Back button (pops self)
 
 ### 3. Navigation
 
 **Tab Navigation**
 
 * Categories
-* Upload
+* Brands
 
-**Flow Navigation**
+**App Architecture**
 
-* Landing
-   * Login -> Home
-   * Register -> Register
-* HomeView (Tab Navigation)
-   * Categories
-   * Upload
+
+<img src="assets/images/app-flow.png" width=600>
 
 <!--
 TODO: Add wireframes
@@ -74,8 +85,50 @@ TODO: Add schema
 This section will be completed in Unit 9
 -->
 
-<!--
-TODO: Add models
 ## Models
-[Add table of models]
--->
+### Gender
+Variant name|
+---|
+male|
+female|
+other|
+
+## Category
+Variant name|
+---|
+top|
+bottom|
+shoe|
+accessory|
+other|
+
+## Brand
+Variant name|
+---|
+adidas|
+hAndM|
+...
+levis|
+other|
+
+## ClothingItem
+Field name|Field type
+---|---
+name|`String`
+categories|`[Category]`
+imageFile|`ParseFile`
+brand|`Brand`
+size|`String`
+notes|`String?`
+...|
+
+## User
+Field name|Field type
+---|---
+gender|`Gender`
+closet|`[ClothingItem]`
+...|
+username|`String`
+email|`String`
+password|`String`
+...|
