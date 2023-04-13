@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginView: UIViewController {
     
     // MARK: Overrides
 
