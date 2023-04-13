@@ -20,7 +20,7 @@
 		52C7374429E5F58100266ADE /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374329E5F58100266ADE /* Secrets.swift */; };
 		52C7374629E610C100266ADE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374529E610C100266ADE /* User.swift */; };
 		52C7374829E6113100266ADE /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374729E6113100266ADE /* Gender.swift */; };
-		52C7374A29E612EB00266ADE /* ClothingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374929E612EB00266ADE /* ClothingItem.swift */; };
+		52C7374A29E612EB00266ADE /* ClosetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374929E612EB00266ADE /* ClosetItem.swift */; };
 		52C7374C29E6148000266ADE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374B29E6148000266ADE /* Category.swift */; };
 		52C7374E29E6522A00266ADE /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374D29E6522A00266ADE /* Brand.swift */; };
 		52C7375029E8A12100266ADE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374F29E8A12100266ADE /* RegisterView.swift */; };
@@ -39,7 +39,7 @@
 		52C7374329E5F58100266ADE /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		52C7374529E610C100266ADE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		52C7374729E6113100266ADE /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
-		52C7374929E612EB00266ADE /* ClothingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItem.swift; sourceTree = "<group>"; };
+		52C7374929E612EB00266ADE /* ClosetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetItem.swift; sourceTree = "<group>"; };
 		52C7374B29E6148000266ADE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		52C7374D29E6522A00266ADE /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		52C7374F29E8A12100266ADE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 			children = (
 				52C7374529E610C100266ADE /* User.swift */,
 				52C7374729E6113100266ADE /* Gender.swift */,
-				52C7374929E612EB00266ADE /* ClothingItem.swift */,
+				52C7374929E612EB00266ADE /* ClosetItem.swift */,
 				52C7374B29E6148000266ADE /* Category.swift */,
 				52C7374D29E6522A00266ADE /* Brand.swift */,
 			);
@@ -203,7 +203,7 @@
 				52BAFC8429E512FC0013A991 /* AppDelegate.swift in Sources */,
 				52C7374629E610C100266ADE /* User.swift in Sources */,
 				52BAFC8629E512FC0013A991 /* SceneDelegate.swift in Sources */,
-				52C7374A29E612EB00266ADE /* ClothingItem.swift in Sources */,
+				52C7374A29E612EB00266ADE /* ClosetItem.swift in Sources */,
 				52C7374C29E6148000266ADE /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

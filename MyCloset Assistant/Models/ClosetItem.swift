@@ -8,7 +8,7 @@
 import Foundation
 import ParseSwift
 
-struct ClothingItem: ParseObject {
+struct ClosetItem: ParseObject {
     
     // Custom fields
     var name: String?

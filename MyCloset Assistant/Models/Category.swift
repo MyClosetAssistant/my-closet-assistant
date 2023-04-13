@@ -6,41 +6,18 @@
 //
 
 import Foundation
+import ParseSwift
 
-enum Category: Encodable, Decodable, Equatable, CaseIterable {
+struct Category: ParseObject {
     
-    static var allCases: [Category] {
-        return [.top, .bottom, .shoe, .accessory]
-    }
+    // Custom fields
+    var name: String?
     
-    case top
-    case bottom
-    case shoe
-    case accessory
-    case other(category: String)
-    
-}
+    // Required for ParseObject
+    var originalData: Data?
+    var objectId: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+    var ACL: ParseSwift.ParseACL?
 
-extension Category: CustomStringConvertible {
-    
-    var description: String {
-        switch self {
-        case .top:
-            return "Top"
-        case .bottom:
-            return "Bottom"
-        case .shoe:
-            return "Shoe"
-        case .accessory:
-            return "Accessory"
-        case .other(category: let category):
-            guard !category.lowercased().isEmpty else {
-                return ""
-            }
-            var result = category.lowercased()
-            let firstCharacter = result.removeFirst()
-            return firstCharacter.uppercased() + result
-        }
-    }
-    
 }
