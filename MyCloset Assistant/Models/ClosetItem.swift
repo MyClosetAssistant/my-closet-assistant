@@ -12,11 +12,11 @@ struct ClosetItem: ParseObject {
     
     // Custom fields
     var name: String?
-    var categories: [Category]?
     var imageFile: ParseFile?
-    var brand: Brand?
+    var brand: String?
     var size: String?
     var notes: String?
+    var categories: Set<String>?
     
     // Required for ParseObject
     var originalData: Data?
@@ -24,5 +24,16 @@ struct ClosetItem: ParseObject {
     var createdAt: Date?
     var updatedAt: Date?
     var ACL: ParseSwift.ParseACL?
+    
+}
+
+extension ClosetItem {
+    
+    init(name: String, image: ParseFile?, size: String, notes: String?) {
+        self.name = name
+        self.imageFile = image
+        self.size = size
+        self.notes = notes
+    }
     
 }

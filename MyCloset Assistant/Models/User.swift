@@ -12,7 +12,9 @@ struct User: ParseUser {
     
     // Custom fields
     var gender: Gender?
-    var closet: [Category: ClosetItem]?
+    var closet: [ClosetItem]?
+    var categories: Set<String>?
+    var brands: Set<String>?
     
     // Required for ParseUser
     var username: String?
@@ -26,4 +28,13 @@ struct User: ParseUser {
     var updatedAt: Date?
     var ACL: ParseSwift.ParseACL?
     
+}
+
+extension User {
+    init(username: String, email: String, password: String, gender: Gender) {
+        self.username = username
+        self.email = email
+        self.password = password
+        self.gender = gender
+    }
 }

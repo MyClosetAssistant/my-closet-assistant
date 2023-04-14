@@ -24,6 +24,8 @@
 		52C7374C29E6148000266ADE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374B29E6148000266ADE /* Category.swift */; };
 		52C7374E29E6522A00266ADE /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374D29E6522A00266ADE /* Brand.swift */; };
 		52C7375029E8A12100266ADE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374F29E8A12100266ADE /* RegisterView.swift */; };
+		52C7375929E8E20A00266ADE /* CategoriesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7375829E8E20A00266ADE /* CategoriesTabView.swift */; };
+		52C7375C29E8E22B00266ADE /* BrandsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7375B29E8E22B00266ADE /* BrandsTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		52C7374B29E6148000266ADE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		52C7374D29E6522A00266ADE /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		52C7374F29E8A12100266ADE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		52C7375829E8E20A00266ADE /* CategoriesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTabView.swift; sourceTree = "<group>"; };
+		52C7375B29E8E22B00266ADE /* BrandsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 			children = (
 				52BAFC8729E512FC0013A991 /* LoginView.swift */,
 				52C7374F29E8A12100266ADE /* RegisterView.swift */,
+				52C7375A29E8E21300266ADE /* Tabs */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -111,6 +116,15 @@
 				52C7374D29E6522A00266ADE /* Brand.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		52C7375A29E8E21300266ADE /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				52C7375829E8E20A00266ADE /* CategoriesTabView.swift */,
+				52C7375B29E8E22B00266ADE /* BrandsTabView.swift */,
+			);
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,12 +211,14 @@
 			files = (
 				52C7374829E6113100266ADE /* Gender.swift in Sources */,
 				52C7375029E8A12100266ADE /* RegisterView.swift in Sources */,
+				52C7375C29E8E22B00266ADE /* BrandsTabView.swift in Sources */,
 				52C7374E29E6522A00266ADE /* Brand.swift in Sources */,
 				52BAFC8829E512FC0013A991 /* LoginView.swift in Sources */,
 				52C7374429E5F58100266ADE /* Secrets.swift in Sources */,
 				52BAFC8429E512FC0013A991 /* AppDelegate.swift in Sources */,
 				52C7374629E610C100266ADE /* User.swift in Sources */,
 				52BAFC8629E512FC0013A991 /* SceneDelegate.swift in Sources */,
+				52C7375929E8E20A00266ADE /* CategoriesTabView.swift in Sources */,
 				52C7374A29E612EB00266ADE /* ClosetItem.swift in Sources */,
 				52C7374C29E6148000266ADE /* Category.swift in Sources */,
 			);
