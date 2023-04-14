@@ -13,7 +13,7 @@ struct ClosetItem: ParseObject {
     // Custom fields
     var name: String?
     var imageFile: ParseFile?
-    var brand: Brand?
+    var brand: String?
     var size: String?
     var notes: String?
     var categories: Set<String>?
@@ -29,10 +29,9 @@ struct ClosetItem: ParseObject {
 
 extension ClosetItem {
     
-    init(name: String, image: ParseFile?, brand: Brand, size: String, notes: String?) {
+    init(name: String, image: ParseFile?, size: String, notes: String?) {
         self.name = name
         self.imageFile = image
-        self.brand = brand
         self.size = size
         self.notes = notes
     }
