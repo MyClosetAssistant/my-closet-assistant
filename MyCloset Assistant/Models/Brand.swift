@@ -21,3 +21,11 @@ struct Brand: ParseObject {
     var ACL: ParseSwift.ParseACL?
 
 }
+
+extension Brand {
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+}

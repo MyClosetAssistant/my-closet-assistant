@@ -21,3 +21,11 @@ struct Category: ParseObject {
     var ACL: ParseSwift.ParseACL?
 
 }
+
+extension Category {
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+}
