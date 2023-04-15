@@ -13,8 +13,8 @@ struct User: ParseUser {
     // Custom fields
     var gender: Gender?
     var closet: [ClosetItem]?
-    var categories: Set<String>?
-    var brands: Set<String>?
+    var categories: [String]?
+    var brands: [String]?
     
     // Required for ParseUser
     var username: String?

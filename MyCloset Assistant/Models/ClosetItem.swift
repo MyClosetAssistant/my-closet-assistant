@@ -16,7 +16,7 @@ struct ClosetItem: ParseObject {
     var brand: String?
     var size: String?
     var notes: String?
-    var categories: Set<String>?
+    var categories: [String]?
     
     // Required for ParseObject
     var originalData: Data?
