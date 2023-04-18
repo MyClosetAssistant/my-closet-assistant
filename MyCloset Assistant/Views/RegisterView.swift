@@ -9,6 +9,7 @@ import UIKit
 
 class RegisterView: UIViewController {
 
+    @IBOutlet weak var popUpButton: UIButton!
     // MARK: Overrides
     
     override func viewDidLoad() {
