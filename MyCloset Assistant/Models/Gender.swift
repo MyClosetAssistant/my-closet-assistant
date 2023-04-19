@@ -11,7 +11,7 @@ enum Gender: Encodable, Decodable, Equatable {
     
     case female
     case male
-    case other(gender: String)
+    case other
     
 }
 
@@ -23,13 +23,8 @@ extension Gender: CustomStringConvertible {
             return "Female"
         case .male:
             return "Male"
-        case .other(let gender):
-            guard !gender.lowercased().isEmpty else {
-                return ""
-            }
-            var result = gender.lowercased()
-            let firstCharacter = result.removeFirst()
-            return firstCharacter.uppercased() + result
+        case .other:
+            return "Other"
         }
     }
     
