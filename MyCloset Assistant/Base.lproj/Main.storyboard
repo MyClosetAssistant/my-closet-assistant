@@ -200,6 +200,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="brandsTextLabel" destination="obf-Mr-YJZ" id="1D3-gC-ElV"/>
+                                            <segue destination="UgV-gT-9Kz" kind="show" id="cnm-2T-Nxg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -449,6 +450,9 @@
             <point key="canvasLocation" x="2043.5114503816792" y="726.76056338028172"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="GIW-uf-lxF"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="star.square.on.square.fill" catalog="system" width="128" height="116"/>
