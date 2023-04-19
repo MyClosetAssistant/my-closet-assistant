@@ -18,6 +18,8 @@ class RegisterView: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
+    var userGender: Gender? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,8 +45,20 @@ class RegisterView: UIViewController {
     
     func update(number:String) {
         if number == "  \(Gender.other)" {
-         print("option 1 selected")
-         
+         userGender =  .other
+         print("other selected")
+        }
+        if number == "  \(Gender.female)" {
+         userGender = .female
+         print("female selected")
+        }
+        if number == "  \(Gender.male)" {
+         userGender = .male
+         print("male selected")
+        }
+        if number == "  select gender" {
+         userGender = nil
+         print("make a selection")
         }
     }
     
@@ -53,7 +67,7 @@ class RegisterView: UIViewController {
         // Make sure all fields are non-nil and non-empty.
         guard let username = usernameField.text,
               let email = emailField.text,
-//              let gender = genderButton.text,
+              let gender = userGender,
               let password = passwordField.text,
               !username.isEmpty,
               !email.isEmpty,
@@ -69,7 +83,7 @@ class RegisterView: UIViewController {
         newUser.username = username
         newUser.email = email
         newUser.password = password
-
+        newUser.gender = gender
         newUser.signup { [weak self] result in
 
             switch result {
