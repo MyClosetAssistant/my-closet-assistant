@@ -22,6 +22,39 @@ class CategoriesTabView: UIViewController {
         categoriesCollectionView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cell = sender as? UICollectionViewCell,
+              let indexPath = categoriesCollectionView.indexPath(for: cell),
+              let destination = segue.destination as? ResultsView else {
+            return
+        }
+        
+        let category = categories[indexPath.row]
+        destination.navigationBar.title = category
+        queryClosetItems(with: category) { items in
+            destination.items = items
+            DispatchQueue.main.async {
+                destination.itemsTableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: Private helpers
+    
+    private func queryClosetItems(with category: String, completion: @escaping ([ClosetItem]) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            ClosetItem.query().include("user").find { queryResults in
+                switch queryResults {
+                case .success(let results):
+                    let items = results.filter { $0.categories == nil || $0.categories!.contains(category) }
+                    completion(items)
+                case .failure(let error):
+                    fatalError("\(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: Conform CategoriesTabView to UICollectionViewDataSource
