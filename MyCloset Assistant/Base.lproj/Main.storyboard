@@ -226,6 +226,92 @@
             </objects>
             <point key="canvasLocation" x="2970.2290076335876" y="726.76056338028172"/>
         </scene>
+        <!--Results View-->
+        <scene sceneID="oEc-eE-Z2W">
+            <objects>
+                <viewController id="UgV-gT-9Kz" customClass="ResultsView" customModule="MyCloset_Assistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6m9-Ky-12c">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ufs-DN-TTL">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="163" id="caW-3Y-bqm" customClass="ItemCell" customModule="MyCloset_Assistant" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="163"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="caW-3Y-bqm" id="FcD-8d-ISJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="163"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1C-vb-jCK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="163"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Zia-zY-iWT">
+                                                            <rect key="frame" x="23" y="18" width="347" height="127"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQY-Zg-zR4">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="94.666666666666671"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category A, Category B" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2L-Wv-zWi">
+                                                                    <rect key="frame" x="0.0" y="112.66666666666666" width="133.66666666666666" height="14.333333333333329"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="14.333333333333343" id="kcO-fI-Nc9"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="Zia-zY-iWT" secondAttribute="bottom" constant="10" id="CFz-sO-fLL"/>
+                                                        <constraint firstItem="Zia-zY-iWT" firstAttribute="top" secondItem="R1C-vb-jCK" secondAttribute="topMargin" constant="10" id="YNy-U6-Wm3"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="Zia-zY-iWT" secondAttribute="trailing" constant="15" id="bQU-rp-ppS"/>
+                                                        <constraint firstItem="Zia-zY-iWT" firstAttribute="leading" secondItem="R1C-vb-jCK" secondAttribute="leadingMargin" constant="15" id="pr1-4R-a5S"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="R1C-vb-jCK" secondAttribute="trailing" id="G8K-rf-OEU"/>
+                                                <constraint firstItem="R1C-vb-jCK" firstAttribute="leading" secondItem="FcD-8d-ISJ" secondAttribute="leading" id="KvF-fE-hIL"/>
+                                                <constraint firstItem="R1C-vb-jCK" firstAttribute="top" secondItem="FcD-8d-ISJ" secondAttribute="top" id="Pex-QB-9Ly"/>
+                                                <constraint firstAttribute="bottom" secondItem="R1C-vb-jCK" secondAttribute="bottom" id="aFQ-f1-rFn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemCategoriesLabel" destination="a2L-Wv-zWi" id="rfR-dh-6j3"/>
+                                            <outlet property="itemNameLabel" destination="PQY-Zg-zR4" id="Sfr-kV-uP1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Xwz-Wx-wPn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ufs-DN-TTL" firstAttribute="top" secondItem="Xwz-Wx-wPn" secondAttribute="top" id="9wn-Ec-gum"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Ufs-DN-TTL" secondAttribute="bottom" id="JiI-4A-Gr6"/>
+                            <constraint firstItem="Xwz-Wx-wPn" firstAttribute="trailing" secondItem="Ufs-DN-TTL" secondAttribute="trailing" id="KnP-q8-tGr"/>
+                            <constraint firstItem="Ufs-DN-TTL" firstAttribute="leading" secondItem="Xwz-Wx-wPn" secondAttribute="leading" id="Ypz-fk-dgP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lyc-wW-oMI"/>
+                    <connections>
+                        <outlet property="itemsTableView" destination="Ufs-DN-TTL" id="9ZT-5b-FIT"/>
+                        <outlet property="navigationBar" destination="lyc-wW-oMI" id="4jC-6r-oKo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pzb-UQ-eh7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4049.6183206106871" y="354.92957746478874"/>
+        </scene>
         <!--Categories-->
         <scene sceneID="Fy4-cW-sSq">
             <objects>
@@ -279,6 +365,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="categoriesTextLabel" destination="P3g-yY-v00" id="okh-wl-5la"/>
+                                            <segue destination="UgV-gT-9Kz" kind="show" identifier="ShowResultsFromCategories" id="GIW-uf-lxF"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
