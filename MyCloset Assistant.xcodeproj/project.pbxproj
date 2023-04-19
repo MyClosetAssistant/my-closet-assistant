@@ -17,6 +17,8 @@
 		52BAFC9929E513810013A991 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 52BAFC9829E513810013A991 /* Alamofire */; };
 		52BAFC9C29E513950013A991 /* ParseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52BAFC9B29E513950013A991 /* ParseSwift */; };
 		52BAFC9F29E513B00013A991 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 52BAFC9E29E513B00013A991 /* AlamofireImage */; };
+		52C2887229EF197900D9C7E0 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C2887129EF197900D9C7E0 /* ResultsView.swift */; };
+		52C2887429EFA1BE00D9C7E0 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C2887329EFA1BE00D9C7E0 /* ItemCell.swift */; };
 		52C7374429E5F58100266ADE /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374329E5F58100266ADE /* Secrets.swift */; };
 		52C7374629E610C100266ADE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374529E610C100266ADE /* User.swift */; };
 		52C7374829E6113100266ADE /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7374729E6113100266ADE /* Gender.swift */; };
@@ -38,6 +40,8 @@
 		52BAFC8C29E512FC0013A991 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52BAFC8F29E512FC0013A991 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52BAFC9129E512FC0013A991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52C2887129EF197900D9C7E0 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		52C2887329EFA1BE00D9C7E0 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		52C7374329E5F58100266ADE /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		52C7374529E610C100266ADE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		52C7374729E6113100266ADE /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
@@ -99,10 +103,11 @@
 		52BAFCA029E514900013A991 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52C7375A29E8E21300266ADE /* Tabs */,
 				52C7375D29EA169B00266ADE /* Cells */,
 				52BAFC8729E512FC0013A991 /* LoginView.swift */,
 				52C7374F29E8A12100266ADE /* RegisterView.swift */,
-				52C7375A29E8E21300266ADE /* Tabs */,
+				52C2887129EF197900D9C7E0 /* ResultsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			children = (
 				52C7375E29EA16C400266ADE /* BrandsTableCell.swift */,
 				52C7376029EA2CC100266ADE /* CategoriesTableCell.swift */,
+				52C2887329EFA1BE00D9C7E0 /* ItemCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -219,7 +225,9 @@
 			files = (
 				52C7374829E6113100266ADE /* Gender.swift in Sources */,
 				52C7375029E8A12100266ADE /* RegisterView.swift in Sources */,
+				52C2887229EF197900D9C7E0 /* ResultsView.swift in Sources */,
 				52C7375C29E8E22B00266ADE /* BrandsTabView.swift in Sources */,
+				52C2887429EFA1BE00D9C7E0 /* ItemCell.swift in Sources */,
 				52BAFC8829E512FC0013A991 /* LoginView.swift in Sources */,
 				52C7374429E5F58100266ADE /* Secrets.swift in Sources */,
 				52BAFC8429E512FC0013A991 /* AppDelegate.swift in Sources */,
