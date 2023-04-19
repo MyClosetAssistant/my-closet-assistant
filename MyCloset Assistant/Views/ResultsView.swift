@@ -37,6 +37,7 @@ extension ResultsView: UITableViewDataSource {
         let item = items[indexPath.item]
         cell.itemNameLabel.text = item.name
         cell.itemCategoriesLabel.text = item.categories == nil ? "No categories" : item.categories!.joined(separator: ", ")
+        cell.closetItem = item
         return cell
     }
     
