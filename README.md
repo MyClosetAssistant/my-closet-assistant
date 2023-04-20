@@ -21,11 +21,11 @@ MyCloset Assistant is an app that helps users categorize andstore their closet i
 
 **Required Must-have Stories**
 
-- [ ] As a user, I can signup for a new account.
-- [ ] As a user, I can login to my account.
+- [X] As a user, I can signup for a new account.
+- [X] As a user, I can login to my account.
 - [ ] As a user, I can take and upload pictures to MyCloset Assistant.
 - [ ] As a user, I can assign a category to my clothes.
-- [ ] As a user, I can organize my clothes based on different categories.
+- [X] As a user, I can organize my clothes based on different categories.
 - [ ] As a user, I can delete any clothing items from my closet. 
 
 **Optional Nice-to-have Stories**
