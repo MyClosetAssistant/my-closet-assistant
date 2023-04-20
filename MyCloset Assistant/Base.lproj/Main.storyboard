@@ -216,7 +216,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Brands" id="tCf-oL-f4B">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="hL3-EW-FKI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="hL3-EW-FKI">
+                            <connections>
+                                <action selector="onLogOutTapped:" destination="9LJ-EU-xNA" id="FRa-XJ-eYs"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New Item" id="q8Y-Aj-2jo"/>
                     </navigationItem>
                     <connections>
@@ -455,7 +459,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GIW-uf-lxF"/>
+        <segue reference="cnm-2T-Nxg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
