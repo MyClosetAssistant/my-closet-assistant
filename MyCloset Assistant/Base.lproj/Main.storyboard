@@ -382,7 +382,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="1Cm-5O-wdg">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="gnY-wY-P3S"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="gnY-wY-P3S">
+                            <connections>
+                                <action selector="onLogOutTapped:" destination="laQ-gi-9Tv" id="St8-cS-ZTG"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New Item" id="hOu-vo-zYE"/>
                     </navigationItem>
                     <connections>
