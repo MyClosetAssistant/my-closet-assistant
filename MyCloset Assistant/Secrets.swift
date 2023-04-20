@@ -8,13 +8,14 @@
 import Foundation
 
 class SecretManager {
+    
     static let shared = SecretManager()
     
     var fileName: String = "Secrets"
     var fileExtension: String = "plist"
     private var map: NSDictionary
     
-    // Keys as they appear in the plist file
+    /// Keys as they appear in the plist file
     public enum Key: String {
         typealias RawValue = String
         
@@ -40,4 +41,5 @@ class SecretManager {
         guard let key = map[key.rawValue] as? String else { return "" }
         return key
     }
+    
 }

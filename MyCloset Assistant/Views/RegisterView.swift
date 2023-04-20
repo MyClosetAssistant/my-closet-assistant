@@ -10,37 +10,31 @@ import UIKit
 class RegisterView: UIViewController {
 
     @IBOutlet weak var genderButton: UIButton!
-    
     @IBOutlet weak var usernameField: UITextField!
-    
     @IBOutlet weak var emailField: UITextField!
-    
-    
     @IBOutlet weak var passwordField: UITextField!
-    
     var userGender: Gender? = nil
+    
+    // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Customize the appearance of the pullDownButton
         genderButton.layer.cornerRadius = 5
         genderButton.layer.borderWidth = 0.5
         genderButton.layer.borderColor = UIColor.systemGray4.cgColor
-        let menuClosure = {(action: UIAction) in
-                   
-               self.update(number: action.title)
-           }
-         genderButton.menu = UIMenu(children: [
-
-                UIAction(title: "  select gender", state: .on, handler: menuClosure),
-                UIAction(title: "  \(Gender.other)", handler: menuClosure),
-                UIAction(title: "  \(Gender.male)", handler: menuClosure),
-                UIAction(title: "  \(Gender.female)", handler: menuClosure),
-               ])
-           genderButton.showsMenuAsPrimaryAction = true
-           genderButton.changesSelectionAsPrimaryAction = true
+        let menuClosure = { (action: UIAction) in
+            self.update(number: action.title)
+        }
+        genderButton.menu = UIMenu(children: [
+            UIAction(title: "  select gender", state: .on, handler: menuClosure),
+            UIAction(title: "  \(Gender.other)", handler: menuClosure),
+            UIAction(title: "  \(Gender.male)", handler: menuClosure),
+            UIAction(title: "  \(Gender.female)", handler: menuClosure),
+        ])
+        genderButton.showsMenuAsPrimaryAction = true
+        genderButton.changesSelectionAsPrimaryAction = true
     }
     
     func update(number:String) {
@@ -63,39 +57,28 @@ class RegisterView: UIViewController {
     }
     
     @IBAction func OnRegisterTapped(_ sender: Any) {
-
-        // Make sure all fields are non-nil and non-empty.
         guard let username = usernameField.text,
               let email = emailField.text,
               let gender = userGender,
               let password = passwordField.text,
               !username.isEmpty,
               !email.isEmpty,
-//              !gender.isEmpty,
               !password.isEmpty else {
-
             showMissingFieldsAlert()
             return
         }
 
-        // TODO: Pt 1 - Parse user sign up
         var newUser = User()
         newUser.username = username
         newUser.email = email
         newUser.password = password
         newUser.gender = gender
         newUser.signup { [weak self] result in
-
             switch result {
             case .success(let user):
-
-                print("✅ Successfully signed up user \(user)")
-
-                // Post a notification that the user has successfully signed up.
+                print("Successfully signed up user \(user)")
                 NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
-
             case .failure(let error):
-                // Failed sign up
                 self?.showAlert(description: error.localizedDescription)
             }
         }
@@ -114,6 +97,5 @@ class RegisterView: UIViewController {
         alertController.addAction(action)
         present(alertController, animated: true)
     }
-    
     
 }
