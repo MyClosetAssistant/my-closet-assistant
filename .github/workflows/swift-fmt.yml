@@ -32,12 +32,8 @@ jobs:
 
       - name: Reformat the codebase
         run: |
-          echo 'before changing directory:'
-          pwd
-          cd ..
-          echo 'after changing directory'
-          pwd
-          cd 'MyCloset Assistant/'
+          cd ../my-closet-assistant/
+          ls ..
           ../swift-fmt/.build/release/./swift-format format --in-place --parallel --recursive .
 
       - name: Commit the changes
