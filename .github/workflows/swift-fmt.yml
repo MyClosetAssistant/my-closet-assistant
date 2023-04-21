@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths: ['**/*.swift']
 
+env:
+  TOKEN: ${{ secrets.VILLALEO_PAT }}
+
 jobs:
   reformat-codebase:
     runs-on: macos-latest
@@ -15,6 +18,7 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ env.TOKEN }}
 
       - name: Setup XCode
         uses: maxim-lobanov/setup-xcode@v1
@@ -25,23 +29,15 @@ jobs:
         run: |
           git clone https://github.com/apple/swift-format.git
       
-      - name: Build swift-format
+      - name: Reformat the codebase
         run: |
           cd swift-format
           swift build -c release
-
-      - name: Check compatibility with Swift toolchain
-        run: |
-          swift test --parallel
-
-      - name: Reformat the codebase
-        run: |
-          cd ../MyCloset\ Assistant/
-          alias swift-fmt="swift-format/.build/release/./swift-format"
-          swift-fmt format --in-place --parallel --recursive .
+          cd ..
+          swift-format/.build/release/./swift-format format --in-place --parallel --recursive 'MyCloset Assistant/'
 
       - name: Commit the changes
-        uses: EndBug/add-and-commit@9
+        uses: EndBug/add-and-commit@v9
         with:
           add: -A
           author_name: SwiftReformatter
