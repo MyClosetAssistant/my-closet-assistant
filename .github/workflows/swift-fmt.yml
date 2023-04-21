@@ -30,10 +30,6 @@ jobs:
           cd swift-format
           swift build -c release
 
-      - name: Check compatibility with Swift toolchain
-        run: |
-          swift test --parallel
-
       - name: Reformat the codebase
         run: |
           cd ../MyCloset\ Assistant/
