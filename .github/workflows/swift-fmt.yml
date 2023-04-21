@@ -32,9 +32,13 @@ jobs:
 
       - name: Reformat the codebase
         run: |
-          cd ../MyCloset\ Assistant/
-          alias swift-fmt="swift-format/.build/release/./swift-format"
-          swift-fmt format --in-place --parallel --recursive .
+          echo 'before changing directory:'
+          pwd
+          cd ..
+          echo 'after changing directory'
+          pwd
+          cd 'MyCloset Assistant/'
+          ../swift-fmt/.build/release/./swift-format format --in-place --parallel --recursive .
 
       - name: Commit the changes
         uses: EndBug/add-and-commit@v9
