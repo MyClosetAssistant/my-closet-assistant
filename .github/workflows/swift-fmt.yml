@@ -30,7 +30,7 @@ jobs:
           cd swift-format
           swift build -c release
           cd ..
-          swift-format/.build/release/./swift-format format --in-place --parallel --recursive .
+          swift-format/.build/release/./swift-format format --in-place --parallel --recursive 'MyCloset Assistant/'
 
       - name: Commit the changes
         uses: EndBug/add-and-commit@v9
