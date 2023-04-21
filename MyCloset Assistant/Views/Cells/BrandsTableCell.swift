@@ -9,7 +9,7 @@ import UIKit
 
 class BrandsTableCell: UICollectionViewCell {
 
-    static let reusableId = "BrandsTableCell.Identifier"
-    @IBOutlet weak var brandsTextLabel: UILabel!
-    
+  static let reusableId = "BrandsTableCell.Identifier"
+  @IBOutlet weak var brandsTextLabel: UILabel!
+
 }
