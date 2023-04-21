@@ -12,6 +12,7 @@ import ParseSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Initialize Parse using Back4App secrets
         initializeParse()
         return true
     }
