@@ -30,11 +30,7 @@ jobs:
           cd swift-format
           swift build -c release
           cd ..
-          echo 'ls on cwd'
-          ls
-          echo ''
-          ls ..
-          swift-fmt/.build/release/./swift-format format --in-place --parallel --recursive .
+          swift-format/.build/release/./swift-format format --in-place --parallel --recursive .
 
       - name: Commit the changes
         uses: EndBug/add-and-commit@v9
