@@ -93,42 +93,25 @@ male|
 female|
 other|
 
-## Category
-Variant name|
----|
-top|
-bottom|
-shoe|
-accessory|
-other|
-
-## Brand
-Variant name|
----|
-adidas|
-hAndM|
-...
-levis|
-other|
-
 ## ClothingItem
 Field name|Field type
 ---|---
 name|`String`
-categories|`[Category]`
+categories|`[String]`
 imageFile|`ParseFile`
-brand|`Brand`
+brand|`String`
 size|`String`
 notes|`String?`
-...|
+... ParseObject fields|
 
 ## User
 Field name|Field type
 ---|---
 gender|`Gender`
 closet|`[ClothingItem]`
-...|
+categories|`[String]`
+brands|`[String]`
 username|`String`
 email|`String`
 password|`String`
-...|
+... ParseUser fields|
