@@ -13,19 +13,31 @@ class RegisterView: UIViewController {
   @IBOutlet weak var usernameField: UITextField!
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
+  @IBOutlet weak var usernameErrorLabel: UILabel!
+  @IBOutlet weak var emailErrorLabel: UILabel!
+  @IBOutlet weak var genderErrorLabel: UILabel!
+  @IBOutlet weak var passwordErrorLabel: UILabel!
+  @IBOutlet weak var registerErrorLabel: UILabel!
   var userGender: Gender? = nil
+  let queue = DispatchQueue.global(qos: .userInitiated)
 
   // MARK: Overrides
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    usernameErrorLabel.isHidden = true
+    emailErrorLabel.isHidden = true
+    genderErrorLabel.isHidden = true
+    passwordErrorLabel.isHidden = true
+    registerErrorLabel.isHidden = true
+
     // Customize the appearance of the pullDownButton
     genderButton.layer.cornerRadius = 5
     genderButton.layer.borderWidth = 0.5
     genderButton.layer.borderColor = UIColor.systemGray4.cgColor
     let menuClosure = { (action: UIAction) in
-      self.update(number: action.title)
+      self.updateGenderSelection(number: action.title)
     }
     genderButton.menu = UIMenu(children: [
       UIAction(title: "  select gender", state: .on, handler: menuClosure),
@@ -37,7 +49,7 @@ class RegisterView: UIViewController {
     genderButton.changesSelectionAsPrimaryAction = true
   }
 
-  func update(number: String) {
+  func updateGenderSelection(number: String) {
     if number == "  \(Gender.other)" {
       userGender = .other
       print("other selected")
@@ -57,49 +69,74 @@ class RegisterView: UIViewController {
   }
 
   @IBAction func OnRegisterTapped(_ sender: Any) {
-    guard let username = usernameField.text,
-      let email = emailField.text,
-      let gender = userGender,
-      let password = passwordField.text,
-      !username.isEmpty,
-      !email.isEmpty,
-      !password.isEmpty
-    else {
-      showMissingFieldsAlert()
+    let username = usernameField.text!
+    let email = emailField.text!
+    let password = passwordField.text!
+
+    if username.isEmpty {
+      usernameErrorLabel.text = "'Username' field must be filled out"
+      showErrorLabel(for: &usernameErrorLabel)
+    } else {
+      hideErrorLabel(for: &usernameErrorLabel)
+    }
+    if email.isEmpty {
+      emailErrorLabel.text = "'Email' field must be filled out"
+      showErrorLabel(for: &emailErrorLabel)
+    } else {
+      hideErrorLabel(for: &emailErrorLabel)
+    }
+    if password.isEmpty {
+      passwordErrorLabel.text = "'Password' field must be filled out"
+      showErrorLabel(for: &passwordErrorLabel)
+    } else {
+      hideErrorLabel(for: &passwordErrorLabel)
+    }
+    if userGender == nil {
+      genderErrorLabel.text = "You must select a gender"
+      showErrorLabel(for: &genderErrorLabel)
       return
+    } else {
+      hideErrorLabel(for: &genderErrorLabel)
     }
 
-    var newUser = User()
-    newUser.username = username
-    newUser.email = email
-    newUser.password = password
-    newUser.gender = gender
-    newUser.signup { [weak self] result in
+    let newUser = User(username: username, email: email, password: password, gender: userGender!)
+    newUser.signup { [unowned self] result in
       switch result {
       case .success(let user):
-        print("Successfully signed up user \(user)")
-        NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
+        print("Signed up user: \(user)")
+        self.hideErrorLabel(for: &registerErrorLabel)
+        queue.asyncAfter(
+          deadline: .now() + 0.5,
+          execute: {
+            NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
+          })
       case .failure(let error):
-        self?.showAlert(description: error.localizedDescription)
+        self.registerErrorLabel.text = error.message.capitalized
+        self.showErrorLabel(for: &self.registerErrorLabel)
       }
     }
   }
 
-  private func showAlert(description: String?) {
-    let alertController = UIAlertController(
-      title: "Unable to Sign Up", message: description ?? "Unknown error", preferredStyle: .alert)
-    let action = UIAlertAction(title: "OK", style: .default)
-    alertController.addAction(action)
-    present(alertController, animated: true)
+  @IBAction func didTapCancel(_ sender: UIBarButtonItem) {
+    self.dismiss(animated: true)
   }
 
-  private func showMissingFieldsAlert() {
-    let alertController = UIAlertController(
-      title: "Opps...", message: "We need all fields filled out in order to sign you up.",
-      preferredStyle: .alert)
-    let action = UIAlertAction(title: "OK", style: .default)
-    alertController.addAction(action)
-    present(alertController, animated: true)
+  // MARK: Private Helpers
+
+  private func showErrorLabel(for label: inout UILabel) {
+    UILabel.transition(
+      with: label, duration: 0.33, options: [.transitionCrossDissolve],
+      animations: { [label] in
+        label.isHidden = false
+      })
+  }
+
+  private func hideErrorLabel(for label: inout UILabel) {
+    UILabel.animate(
+      withDuration: 0.33,
+      animations: { [label] in
+        label.isHidden = true
+      })
   }
 
 }

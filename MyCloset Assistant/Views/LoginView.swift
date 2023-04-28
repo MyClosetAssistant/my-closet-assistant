@@ -11,49 +11,76 @@ class LoginView: UIViewController {
 
   @IBOutlet weak var usernameField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
+  @IBOutlet weak var usernameErrorLabel: UILabel!
+  @IBOutlet weak var passwordErrorLabel: UILabel!
+  @IBOutlet weak var loginErrorLabel: UILabel!
+  @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+  let queue = DispatchQueue.global(qos: .userInitiated)
 
   // MARK: Overrides
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    loadingIndicator.isHidden = true
+    loadingIndicator.layer.cornerRadius = 5
+    usernameErrorLabel.isHidden = true
+    passwordErrorLabel.isHidden = true
+    loginErrorLabel.isHidden = true
   }
 
   @IBAction func onLoginTapped(_ sender: Any) {
-    guard let username = usernameField.text,
-      let password = passwordField.text,
-      !username.isEmpty,
-      !password.isEmpty
-    else {
-      showMissingFieldsAlert()
-      return
+    let username = usernameField!.text!
+    let password = passwordField!.text!
+
+    if username.isEmpty {
+      usernameErrorLabel.text = "'Username' field must be filled out"
+      showErrorLabel(for: &usernameErrorLabel)
+    }
+    if password.isEmpty {
+      passwordErrorLabel.text = "'Password' field must be filled out"
+      showErrorLabel(for: &passwordErrorLabel)
     }
 
-    User.login(username: username, password: password) { [weak self] result in
+    User.login(username: username, password: password) { [unowned self] result in
+      if !username.isEmpty {
+        self.hideErrorLabel(for: &usernameErrorLabel)
+      }
+      if !password.isEmpty {
+        self.hideErrorLabel(for: &passwordErrorLabel)
+      }
+
       switch result {
       case .success(let user):
-        print("Successfully logged in as user: \(user)")
-        NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
+        loadingIndicator.isHidden = false
+        print("Logged in as user: \(user)")
+        self.hideErrorLabel(for: &loginErrorLabel)
+        queue.asyncAfter(
+          deadline: .now() + 0.5,
+          execute: {
+            NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
+          })
       case .failure(let error):
-        self?.showAlert(description: error.localizedDescription)
+        self.loginErrorLabel.text = error.message.capitalized
+        self.showErrorLabel(for: &self.loginErrorLabel)
       }
     }
   }
 
-  private func showAlert(description: String?) {
-    let alertController = UIAlertController(
-      title: "Unable to Log in", message: description ?? "Unknown error", preferredStyle: .alert)
-    let action = UIAlertAction(title: "OK", style: .default)
-    alertController.addAction(action)
-    present(alertController, animated: true)
+  // MARK: Private Helpers
+
+  private func showErrorLabel(for label: inout UILabel) {
+    UILabel.transition(
+      with: label, duration: 0.33, options: [.transitionCrossDissolve],
+      animations: { [label] in
+        label.isHidden = false
+      })
   }
 
-  private func showMissingFieldsAlert() {
-    let alertController = UIAlertController(
-      title: "Opps...", message: "We need all fields filled out in order to log you in.",
-      preferredStyle: .alert)
-    let action = UIAlertAction(title: "OK", style: .default)
-    alertController.addAction(action)
-    present(alertController, animated: true)
+  private func hideErrorLabel(for label: inout UILabel) {
+    UILabel.animate(
+      withDuration: 0.33,
+      animations: { [label] in
+        label.isHidden = true
+      })
   }
-
 }
