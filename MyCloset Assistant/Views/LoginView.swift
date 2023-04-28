@@ -55,7 +55,7 @@ class LoginView: UIViewController {
         print("Logged in as user: \(user)")
         self.hideErrorLabel(for: &loginErrorLabel)
         queue.asyncAfter(
-          deadline: .now() + 1,
+            deadline: .now() + 0.5,
           execute: {
             NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
           })
