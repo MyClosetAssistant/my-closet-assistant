@@ -37,7 +37,7 @@ class RegisterView: UIViewController {
     genderButton.layer.borderWidth = 0.5
     genderButton.layer.borderColor = UIColor.systemGray4.cgColor
     let menuClosure = { (action: UIAction) in
-      self.update(number: action.title)
+      self.updateGenderSelection(number: action.title)
     }
     genderButton.menu = UIMenu(children: [
       UIAction(title: "  select gender", state: .on, handler: menuClosure),
@@ -49,7 +49,7 @@ class RegisterView: UIViewController {
     genderButton.changesSelectionAsPrimaryAction = true
   }
 
-  func update(number: String) {
+  func updateGenderSelection(number: String) {
     if number == "  \(Gender.other)" {
       userGender = .other
       print("other selected")
