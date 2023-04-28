@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
@@ -111,15 +112,26 @@
                                     <constraint firstItem="zNe-dm-0Jh" firstAttribute="leading" secondItem="UVF-4t-9nE" secondAttribute="leading" constant="30" id="zLI-Cc-dzs"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="jQN-Fd-9l2">
+                                <rect key="frame" x="181.66666666666666" y="411" width="30" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="3nh-F0-YYq"/>
+                                    <constraint firstAttribute="height" constant="30" id="GmR-7d-vLd"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="jQN-Fd-9l2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4IG-qm-fgm"/>
                             <constraint firstItem="UVF-4t-9nE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6MQ-gK-Sxv"/>
+                            <constraint firstItem="jQN-Fd-9l2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="e6S-V7-O06"/>
                             <constraint firstItem="UVF-4t-9nE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="k3h-RS-TL9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="jQN-Fd-9l2" id="Gko-CA-Qdb"/>
                         <outlet property="loginErrorLabel" destination="xcL-i8-HhI" id="LRp-K8-uFx"/>
                         <outlet property="passwordErrorLabel" destination="c0x-0E-qGw" id="T9P-ps-es9"/>
                         <outlet property="passwordField" destination="QC1-n8-Y0A" id="dnu-kD-euR"/>
@@ -270,7 +282,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="igQ-nY-geo">
                         <barButtonItem key="rightBarButtonItem" title="Upload" style="plain" id="byY-YV-MNO">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pOF-Bc-Pyg">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pOF-Bc-Pyg">
                                 <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -457,7 +469,7 @@
             <objects>
                 <viewController id="Hsc-7e-bxW" customClass="RegisterView" customModule="MyCloset_Assistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LNd-es-S5y">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FaT-LZ-suu">
@@ -763,7 +775,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="1Cm-5O-wdg">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="gnY-wY-P3S"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="gnY-wY-P3S">
+                            <connections>
+                                <action selector="onLogOutTapped:" destination="laQ-gi-9Tv" id="HgF-Au-Pbh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New Item" id="hOu-vo-zYE">
                             <connections>
                                 <segue destination="mZ8-h2-XzV" kind="show" id="Kw3-RZ-oJ3"/>
@@ -836,7 +852,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cnm-2T-Nxg"/>
+        <segue reference="GIW-uf-lxF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
@@ -846,6 +862,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

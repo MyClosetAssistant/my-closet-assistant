@@ -14,13 +14,15 @@ class LoginView: UIViewController {
   @IBOutlet weak var usernameErrorLabel: UILabel!
   @IBOutlet weak var passwordErrorLabel: UILabel!
   @IBOutlet weak var loginErrorLabel: UILabel!
-
-  let queue = DispatchQueue.global(qos: .userInitiated)
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    let queue = DispatchQueue.global(qos: .userInitiated)
 
   // MARK: Overrides
 
   override func viewDidLoad() {
     super.viewDidLoad()
+      loadingIndicator.isHidden = true
+      loadingIndicator.layer.cornerRadius = 5
     usernameErrorLabel.isHidden = true
     passwordErrorLabel.isHidden = true
     loginErrorLabel.isHidden = true
@@ -49,6 +51,7 @@ class LoginView: UIViewController {
 
       switch result {
       case .success(let user):
+          loadingIndicator.isHidden = false
         print("Logged in as user: \(user)")
         self.hideErrorLabel(for: &loginErrorLabel)
         queue.asyncAfter(
