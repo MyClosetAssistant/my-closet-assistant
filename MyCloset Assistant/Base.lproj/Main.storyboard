@@ -298,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbF-BF-fur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3879" y="-314"/>
+            <point key="canvasLocation" x="3966" y="-314"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vKN-3q-Xz2">
@@ -467,7 +467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9c-Wj-oel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4937" y="425"/>
+            <point key="canvasLocation" x="4886" y="662"/>
         </scene>
         <!--Register View-->
         <scene sceneID="exu-v3-JKe">
@@ -684,7 +684,11 @@
                                 <action selector="onLogOutTapped:" destination="9LJ-EU-xNA" id="FRa-XJ-eYs"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New Item" id="q8Y-Aj-2jo"/>
+                        <barButtonItem key="rightBarButtonItem" title="New Item" id="q8Y-Aj-2jo">
+                            <connections>
+                                <segue destination="mZ8-h2-XzV" kind="show" id="iqf-Tv-YuH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="brandsCollectionView" destination="aHd-NW-vaB" id="DqD-Yx-PQW"/>
@@ -778,7 +782,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzb-UQ-eh7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3879" y="425"/>
+            <point key="canvasLocation" x="3966" y="644"/>
         </scene>
         <!--Categories-->
         <scene sceneID="Fy4-cW-sSq">
@@ -944,7 +948,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GIW-uf-lxF"/>
+        <segue reference="cnm-2T-Nxg"/>
+        <segue reference="iqf-Tv-YuH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
