@@ -28,6 +28,7 @@
 		52C7375C29E8E22B00266ADE /* BrandsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7375B29E8E22B00266ADE /* BrandsTabView.swift */; };
 		52C7375F29EA16C400266ADE /* BrandsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7375E29EA16C400266ADE /* BrandsTableCell.swift */; };
 		52C7376129EA2CC100266ADE /* CategoriesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7376029EA2CC100266ADE /* CategoriesTableCell.swift */; };
+		66EE28F92A0198F000F85964 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE28F82A0198F000F85964 /* UploadViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		52C7375B29E8E22B00266ADE /* BrandsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsTabView.swift; sourceTree = "<group>"; };
 		52C7375E29EA16C400266ADE /* BrandsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsTableCell.swift; sourceTree = "<group>"; };
 		52C7376029EA2CC100266ADE /* CategoriesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableCell.swift; sourceTree = "<group>"; };
+		66EE28F82A0198F000F85964 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				52C7375A29E8E21300266ADE /* Tabs */,
 				52C7375D29EA169B00266ADE /* Cells */,
 				52BAFC8729E512FC0013A991 /* LoginView.swift */,
+				66EE28F82A0198F000F85964 /* UploadViewController.swift */,
 				52C7374F29E8A12100266ADE /* RegisterView.swift */,
 				52C2887129EF197900D9C7E0 /* ResultsView.swift */,
 			);
@@ -224,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C7374829E6113100266ADE /* Gender.swift in Sources */,
+				66EE28F92A0198F000F85964 /* UploadViewController.swift in Sources */,
 				52C7375029E8A12100266ADE /* RegisterView.swift in Sources */,
 				52C2887229EF197900D9C7E0 /* ResultsView.swift in Sources */,
 				52C7375C29E8E22B00266ADE /* BrandsTabView.swift in Sources */,
@@ -390,7 +394,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -418,7 +422,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

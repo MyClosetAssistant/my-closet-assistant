@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
@@ -151,7 +151,7 @@
         <!--Upload View Scene-->
         <scene sceneID="hY9-Tn-7YX">
             <objects>
-                <viewController title="Upload View Scene" id="mZ8-h2-XzV" sceneMemberID="viewController">
+                <viewController title="Upload View Scene" id="mZ8-h2-XzV" customClass="UploadViewController" customModule="MyCloset_Assistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J5H-uj-61e">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,12 +217,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxS-Xr-wiV">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxS-Xr-wiV">
                                 <rect key="frame" x="162" y="606" width="180" height="94"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kho-vd-8IP">
+                                <rect key="frame" x="157" y="734" width="79" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Upload"/>
+                                <connections>
+                                    <action selector="tappedUpload:" destination="mZ8-h2-XzV" eventType="touchUpInside" id="Tot-e4-kSx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oh7-Lf-bRJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -286,19 +295,31 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="igQ-nY-geo">
-                        <barButtonItem key="rightBarButtonItem" title="Upload" style="plain" id="byY-YV-MNO">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pOF-Bc-Pyg">
-                                <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Upload"/>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="photo.artframe" catalog="system" id="1CO-mP-Vq5">
+                                <connections>
+                                    <action selector="tappedGallery:" destination="mZ8-h2-XzV" id="Zln-Nv-eJc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="camera" catalog="system" id="ugw-Ja-LgI">
+                                <connections>
+                                    <action selector="tappedCamera:" destination="mZ8-h2-XzV" id="G4k-Ee-wTR"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="brandTextField" destination="Eb9-3g-sRh" id="DOh-LY-xSQ"/>
+                        <outlet property="categoryTextField" destination="9pq-XB-mfY" id="rMv-Or-4PA"/>
+                        <outlet property="nameTextField" destination="6QK-hA-DSy" id="CMF-lG-lIR"/>
+                        <outlet property="notesTextField" destination="MxS-Xr-wiV" id="6o4-XD-8kK"/>
+                        <outlet property="sizeTextField" destination="AOK-sm-n8q" id="atb-YL-ubV"/>
+                        <outlet property="uploadImage" destination="ltA-8k-VMp" id="10v-hI-I8k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbF-BF-fur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3966" y="-314"/>
+            <point key="canvasLocation" x="3965.6488549618321" y="-314.08450704225356"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vKN-3q-Xz2">
@@ -474,11 +495,11 @@
             <objects>
                 <viewController id="Hsc-7e-bxW" customClass="RegisterView" customModule="MyCloset_Assistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LNd-es-S5y">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ydO-ON-ao7">
-                                <rect key="frame" x="64" y="205.33333333333334" width="265" height="431.33333333333326"/>
+                                <rect key="frame" x="64" y="175.99999999999997" width="265" height="431.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epw-mr-W7w">
                                         <rect key="frame" x="0.0" y="0.0" width="265" height="36"/>
@@ -491,7 +512,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xo4-PR-ADj" userLabel="Username Stack">
-                                        <rect key="frame" x="0.0" y="55.999999999999972" width="265" height="57"/>
+                                        <rect key="frame" x="0.0" y="56" width="265" height="57"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMw-4z-zhw">
                                                 <rect key="frame" x="0.0" y="0.0" width="265" height="18"/>
@@ -507,7 +528,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1TU-p3-1on" userLabel="Email Stack">
-                                        <rect key="frame" x="0.0" y="132.99999999999997" width="265" height="57"/>
+                                        <rect key="frame" x="0.0" y="133" width="265" height="57"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUr-Io-rwT">
                                                 <rect key="frame" x="0.0" y="0.0" width="265" height="18"/>
@@ -523,7 +544,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hF1-1y-P75" userLabel="Gender Stack">
-                                        <rect key="frame" x="0.0" y="209.99999999999997" width="265" height="52.000000000000028"/>
+                                        <rect key="frame" x="0.0" y="210" width="265" height="52"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNS-Wf-yWP">
                                                 <rect key="frame" x="0.0" y="0.0" width="265" height="18"/>
@@ -948,10 +969,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cnm-2T-Nxg"/>
-        <segue reference="iqf-Tv-YuH"/>
+        <segue reference="GIW-uf-lxF"/>
+        <segue reference="Kw3-RZ-oJ3"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="camera" catalog="system" width="128" height="93"/>
+        <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="star.square.on.square.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
