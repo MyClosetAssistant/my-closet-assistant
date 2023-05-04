@@ -17,36 +17,36 @@ class UploadViewController: UIViewController {
   @IBOutlet weak var sizeTextField: UITextField!
   @IBOutlet weak var notesTextField: UITextField!
   @IBOutlet weak var errorLabel: UILabel!
-    
+
   // MARK: IBActions
-    
+
   @IBAction func tappedCamera(_ sender: Any) {
-print("Tapped Camera")
-guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-    print("ERROR: Camera not available")
-    errorLabel.text = "Camera unavailable. Please try again."
-    showErrorLabel(for: &errorLabel)
-    return
-}
+    print("Tapped Camera")
+    guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+      print("ERROR: Camera not available")
+      errorLabel.text = "Camera unavailable. Please try again."
+      showErrorLabel(for: &errorLabel)
+      return
+    }
 
-// Instantiate the image picker
-let imagePicker = UIImagePickerController()
+    // Instantiate the image picker
+    let imagePicker = UIImagePickerController()
 
-// Shows the camera (vs the photo library)
-imagePicker.sourceType = .camera
+    // Shows the camera (vs the photo library)
+    imagePicker.sourceType = .camera
 
-// Allows user to edit image within image picker flow (i.e. crop, etc.)
-// If you don't want to allow editing, you can leave out this line as the default value of `allowsEditing` is false
-imagePicker.allowsEditing = true
+    // Allows user to edit image within image picker flow (i.e. crop, etc.)
+    // If you don't want to allow editing, you can leave out this line as the default value of `allowsEditing` is false
+    imagePicker.allowsEditing = true
 
-// The image picker (camera in this case) will return captured photos via it's delegate method to it's assigned delegate.
-// Delegate assignee must conform and implement both `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`
-imagePicker.delegate = self
+    // The image picker (camera in this case) will return captured photos via it's delegate method to it's assigned delegate.
+    // Delegate assignee must conform and implement both `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`
+    imagePicker.delegate = self
 
-// Present the image picker (camera)
-present(imagePicker, animated: true)
+    // Present the image picker (camera)
+    present(imagePicker, animated: true)
 
-}
+  }
 
   @IBAction func tappedGallery(_ sender: Any) {
     print("Tapped Gallery")
@@ -73,36 +73,36 @@ present(imagePicker, animated: true)
   }
 
   @IBAction func tappedUpload(_ sender: Any) {
-      let name = nameTextField.text!
-      let category = categoryTextField.text!
-      let brand = brandTextField.text!
-      let size = sizeTextField.text!
-      let notes = notesTextField.text!
-      
-        if name.isEmpty {
-            errorLabel.text = "Name is required."
-            showErrorLabel(for: &errorLabel)
-          return
-        }
-      if category.isEmpty {
-          errorLabel.text = "Category is required."
-          showErrorLabel(for: &errorLabel)
-        return
-      }
-      if brand.isEmpty {
-          errorLabel.text = "Brand is required."
-          showErrorLabel(for: &errorLabel)
-        return
-      }
-    if size.isEmpty {
-        errorLabel.text = "Size is required."
-        showErrorLabel(for: &errorLabel)
+    let name = nameTextField.text!
+    let category = categoryTextField.text!
+    let brand = brandTextField.text!
+    let size = sizeTextField.text!
+    let notes = notesTextField.text!
+
+    if name.isEmpty {
+      errorLabel.text = "Name is required."
+      showErrorLabel(for: &errorLabel)
       return
     }
-      
+    if category.isEmpty {
+      errorLabel.text = "Category is required."
+      showErrorLabel(for: &errorLabel)
+      return
+    }
+    if brand.isEmpty {
+      errorLabel.text = "Brand is required."
+      showErrorLabel(for: &errorLabel)
+      return
+    }
+    if size.isEmpty {
+      errorLabel.text = "Size is required."
+      showErrorLabel(for: &errorLabel)
+      return
+    }
+
     // TODO: Image is required
     // TODO: Image as ParseFile
-      
+
     hideErrorLabel(for: &errorLabel)
 
     var item = ClosetItem(name: name.capitalized, image: nil, size: size.uppercased(), notes: notes)
@@ -117,41 +117,41 @@ present(imagePicker, animated: true)
       }
     }
   }
-    
-    // MARK: Overloads
+
+  // MARK: Overloads
 
   override func viewDidLoad() {
     super.viewDidLoad()
     uploadImage.isHidden = true
-      errorLabel.isHidden = true
+    errorLabel.isHidden = true
     nameTextField.delegate = self
     categoryTextField.delegate = self
     brandTextField.delegate = self
     sizeTextField.delegate = self
     notesTextField.delegate = self
   }
-    
-    // MARK: Private Helpers
 
-    private func showErrorLabel(for label: inout UILabel) {
-      UILabel.transition(
-        with: label, duration: 0.33, options: [.transitionCrossDissolve],
-        animations: { [label] in
-            DispatchQueue.main.async {
-                label.isHidden = false
-            }
-        })
-    }
+  // MARK: Private Helpers
 
-    private func hideErrorLabel(for label: inout UILabel) {
-      UILabel.animate(
-        withDuration: 0.33,
-        animations: { [label] in
-            DispatchQueue.main.async {
-                label.isHidden = true
-            }
-        })
-    }
+  private func showErrorLabel(for label: inout UILabel) {
+    UILabel.transition(
+      with: label, duration: 0.33, options: [.transitionCrossDissolve],
+      animations: { [label] in
+        DispatchQueue.main.async {
+          label.isHidden = false
+        }
+      })
+  }
+
+  private func hideErrorLabel(for label: inout UILabel) {
+    UILabel.animate(
+      withDuration: 0.33,
+      animations: { [label] in
+        DispatchQueue.main.async {
+          label.isHidden = true
+        }
+      })
+  }
 }
 
 // MARK: Conform UploadViewController to UploadViewController
@@ -165,7 +165,7 @@ extension UploadViewController: UITextFieldDelegate {
     } else {
       textField.resignFirstResponder()
     }
-      
+
     return true
   }
 }
@@ -176,29 +176,30 @@ extension UploadViewController: PHPickerViewControllerDelegate {
   func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
     picker.dismiss(animated: true)
 
-    guard let provider = results.first?.itemProvider, provider.canLoadObject(ofClass: UIImage.self) else {
-        errorLabel.text = "An error occurred. Try again."
-        showErrorLabel(for: &errorLabel)
+    guard let provider = results.first?.itemProvider, provider.canLoadObject(ofClass: UIImage.self)
+    else {
+      errorLabel.text = "An error occurred. Try again."
+      showErrorLabel(for: &errorLabel)
       return
     }
 
     provider.loadObject(ofClass: UIImage.self) { [unowned self] object, error in
       guard let image = object as? UIImage else {
         print("ERROR: error casting object to UIImage")
-          DispatchQueue.main.async {
-              self.errorLabel.text = "Error loading image. Try again."
-          }
-          showErrorLabel(for: &self.errorLabel)
+        DispatchQueue.main.async {
+          self.errorLabel.text = "Error loading image. Try again."
+        }
+        showErrorLabel(for: &self.errorLabel)
         return
       }
 
       if let error = error {
-          print("ERROR: \(error.localizedDescription)")
-          errorLabel.text = error.localizedDescription
-          showErrorLabel(for: &errorLabel)
+        print("ERROR: \(error.localizedDescription)")
+        errorLabel.text = error.localizedDescription
+        showErrorLabel(for: &errorLabel)
         return
       }
-    
+
       DispatchQueue.main.async {
         self.uploadImage.image = image
         self.uploadImage.isHidden = false
@@ -218,7 +219,7 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
     guard let image = info[.editedImage] as? UIImage else {
       print("ERROR: Unable to get image from camera")
       self.errorLabel.text = "Error loading image from camera. Try again."
-        showErrorLabel(for: &errorLabel)
+      showErrorLabel(for: &errorLabel)
       return
     }
 
