@@ -296,25 +296,37 @@
                                     <constraint firstAttribute="trailing" secondItem="VOa-pN-iAN" secondAttribute="trailing" id="oJ2-p0-wVP"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kho-vd-8IP">
-                                <rect key="frame" x="157" y="699.66666666666663" width="79" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Upload"/>
-                                <connections>
-                                    <action selector="tappedUpload:" destination="mZ8-h2-XzV" eventType="touchUpInside" id="Tot-e4-kSx"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W83-aT-l7D">
+                                <rect key="frame" x="100" y="679.33333333333337" width="193" height="59.666666666666629"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDW-AP-vkq">
+                                        <rect key="frame" x="0.0" y="0.0" width="193" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kho-vd-8IP">
+                                        <rect key="frame" x="0.0" y="25.333333333333261" width="193" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Upload"/>
+                                        <connections>
+                                            <action selector="tappedUpload:" destination="mZ8-h2-XzV" eventType="touchUpInside" id="Tot-e4-kSx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oh7-Lf-bRJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dom-Bk-CgN" firstAttribute="centerX" secondItem="J5H-uj-61e" secondAttribute="centerX" id="1w4-Zv-gOR"/>
-                            <constraint firstItem="Kho-vd-8IP" firstAttribute="centerX" secondItem="dom-Bk-CgN" secondAttribute="centerX" id="21j-R9-vlW"/>
-                            <constraint firstItem="Kho-vd-8IP" firstAttribute="leading" secondItem="oh7-Lf-bRJ" secondAttribute="leading" constant="157" id="8Xj-Mk-0He"/>
                             <constraint firstItem="oh7-Lf-bRJ" firstAttribute="trailing" secondItem="dom-Bk-CgN" secondAttribute="trailing" constant="30" id="8gQ-eG-bSQ"/>
                             <constraint firstItem="dom-Bk-CgN" firstAttribute="leading" secondItem="oh7-Lf-bRJ" secondAttribute="leading" constant="30" id="R5f-fy-MZA"/>
-                            <constraint firstItem="oh7-Lf-bRJ" firstAttribute="bottom" secondItem="Kho-vd-8IP" secondAttribute="bottom" constant="35" id="XGe-7c-qud"/>
+                            <constraint firstItem="oh7-Lf-bRJ" firstAttribute="trailing" secondItem="W83-aT-l7D" secondAttribute="trailing" constant="100" id="STL-wm-MGg"/>
+                            <constraint firstItem="W83-aT-l7D" firstAttribute="centerX" secondItem="dom-Bk-CgN" secondAttribute="centerX" id="VjW-3V-cmd"/>
+                            <constraint firstItem="W83-aT-l7D" firstAttribute="leading" secondItem="oh7-Lf-bRJ" secondAttribute="leading" constant="100" id="WVu-Mv-ibd"/>
                             <constraint firstItem="dom-Bk-CgN" firstAttribute="top" secondItem="oh7-Lf-bRJ" secondAttribute="top" constant="35" id="Zzk-u6-qNY"/>
+                            <constraint firstItem="oh7-Lf-bRJ" firstAttribute="bottom" secondItem="W83-aT-l7D" secondAttribute="bottom" constant="30" id="zCr-Nu-awI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="igQ-nY-geo">
@@ -334,6 +346,7 @@
                     <connections>
                         <outlet property="brandTextField" destination="Eb9-3g-sRh" id="DOh-LY-xSQ"/>
                         <outlet property="categoryTextField" destination="9pq-XB-mfY" id="rMv-Or-4PA"/>
+                        <outlet property="errorLabel" destination="uDW-AP-vkq" id="kze-bI-dnu"/>
                         <outlet property="nameTextField" destination="6QK-hA-DSy" id="CMF-lG-lIR"/>
                         <outlet property="notesTextField" destination="MxS-Xr-wiV" id="6o4-XD-8kK"/>
                         <outlet property="sizeTextField" destination="AOK-sm-n8q" id="atb-YL-ubV"/>

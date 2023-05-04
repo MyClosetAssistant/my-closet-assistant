@@ -16,32 +16,37 @@ class UploadViewController: UIViewController {
   @IBOutlet weak var brandTextField: UITextField!
   @IBOutlet weak var sizeTextField: UITextField!
   @IBOutlet weak var notesTextField: UITextField!
-
+  @IBOutlet weak var errorLabel: UILabel!
+    
+  // MARK: IBActions
+    
   @IBAction func tappedCamera(_ sender: Any) {
-    print("Tapped Camera")
-    guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-      print("❌📷 Camera not available")
-      return
-    }
+print("Tapped Camera")
+guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+    print("ERROR: Camera not available")
+    errorLabel.text = "Camera unavailable. Please try again."
+    showErrorLabel(for: &errorLabel)
+    return
+}
 
-    // Instantiate the image picker
-    let imagePicker = UIImagePickerController()
+// Instantiate the image picker
+let imagePicker = UIImagePickerController()
 
-    // Shows the camera (vs the photo library)
-    imagePicker.sourceType = .camera
+// Shows the camera (vs the photo library)
+imagePicker.sourceType = .camera
 
-    // Allows user to edit image within image picker flow (i.e. crop, etc.)
-    // If you don't want to allow editing, you can leave out this line as the default value of `allowsEditing` is false
-    imagePicker.allowsEditing = true
+// Allows user to edit image within image picker flow (i.e. crop, etc.)
+// If you don't want to allow editing, you can leave out this line as the default value of `allowsEditing` is false
+imagePicker.allowsEditing = true
 
-    // The image picker (camera in this case) will return captured photos via it's delegate method to it's assigned delegate.
-    // Delegate assignee must conform and implement both `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`
-    imagePicker.delegate = self
+// The image picker (camera in this case) will return captured photos via it's delegate method to it's assigned delegate.
+// Delegate assignee must conform and implement both `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`
+imagePicker.delegate = self
 
-    // Present the image picker (camera)
-    present(imagePicker, animated: true)
+// Present the image picker (camera)
+present(imagePicker, animated: true)
 
-  }
+}
 
   @IBAction func tappedGallery(_ sender: Any) {
     print("Tapped Gallery")
@@ -68,111 +73,155 @@ class UploadViewController: UIViewController {
   }
 
   @IBAction func tappedUpload(_ sender: Any) {
-    // TODO: Make sure non-empty fields
-    guard let name = nameTextField.text,
-      // TODO: Image as ParseFile
-      let size = sizeTextField.text,
-      let notes = notesTextField.text,
-      let brand = brandTextField.text,
-      let category = categoryTextField.text
-    else {
+      let name = nameTextField.text!
+      let category = categoryTextField.text!
+      let brand = brandTextField.text!
+      let size = sizeTextField.text!
+      let notes = notesTextField.text!
+      
+        if name.isEmpty {
+            errorLabel.text = "Name is required."
+            showErrorLabel(for: &errorLabel)
+          return
+        }
+      if category.isEmpty {
+          errorLabel.text = "Category is required."
+          showErrorLabel(for: &errorLabel)
+        return
+      }
+      if brand.isEmpty {
+          errorLabel.text = "Brand is required."
+          showErrorLabel(for: &errorLabel)
+        return
+      }
+    if size.isEmpty {
+        errorLabel.text = "Size is required."
+        showErrorLabel(for: &errorLabel)
       return
     }
+      
+    // TODO: Image is required
+    // TODO: Image as ParseFile
+      
+    hideErrorLabel(for: &errorLabel)
 
-    var item = ClosetItem(name: name, image: nil, size: size, notes: notes)
-    item.brand = brand
-    item.categories = [category]
+    var item = ClosetItem(name: name.capitalized, image: nil, size: size.uppercased(), notes: notes)
+    item.brand = brand.capitalized
+    item.categories = [category.capitalized]
     item.save { result in
       switch result {
-      case .success(_):
-        print("Saved item.")
+      case .success(let item):
+        print("Saved item with name \(item.name!)")
       case .failure(let error):
         print("Error: \(error.localizedDescription)")
       }
     }
-
   }
+    
+    // MARK: Overloads
+
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    // Do any additional setup after loading the view.
     uploadImage.isHidden = true
+      errorLabel.isHidden = true
+    nameTextField.delegate = self
+    categoryTextField.delegate = self
+    brandTextField.delegate = self
+    sizeTextField.delegate = self
+    notesTextField.delegate = self
   }
+    
+    // MARK: Private Helpers
 
-  /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func showErrorLabel(for label: inout UILabel) {
+      UILabel.transition(
+        with: label, duration: 0.33, options: [.transitionCrossDissolve],
+        animations: { [label] in
+            DispatchQueue.main.async {
+                label.isHidden = false
+            }
+        })
     }
-    */
 
+    private func hideErrorLabel(for label: inout UILabel) {
+      UILabel.animate(
+        withDuration: 0.33,
+        animations: { [label] in
+            DispatchQueue.main.async {
+                label.isHidden = true
+            }
+        })
+    }
 }
+
+// MARK: Conform UploadViewController to UploadViewController
+
+extension UploadViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    let nextTag = textField.tag + 1
+
+    if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+      nextResponder.becomeFirstResponder()
+    } else {
+      textField.resignFirstResponder()
+    }
+      
+    return true
+  }
+}
+
+// MARK: Conform UploadViewController to PHPickerViewControllerDelegate
+
 extension UploadViewController: PHPickerViewControllerDelegate {
   func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-    // Dismiss the picker
     picker.dismiss(animated: true)
 
-    // Make sure we have a non-nil item provider
-    guard let provider = results.first?.itemProvider,
-      // Make sure the provider can load a UIImage
-      provider.canLoadObject(ofClass: UIImage.self)
-    else { return }
+    guard let provider = results.first?.itemProvider, provider.canLoadObject(ofClass: UIImage.self) else {
+        errorLabel.text = "An error occurred. Try again."
+        showErrorLabel(for: &errorLabel)
+      return
+    }
 
-    // Load a UIImage from the provider
-    provider.loadObject(ofClass: UIImage.self) { [weak self] object, error in
-
-      // Make sure we can cast the returned object to a UIImage
+    provider.loadObject(ofClass: UIImage.self) { [unowned self] object, error in
       guard let image = object as? UIImage else {
-
-        // ❌ Unable to cast to UIImage
-        //              self?.showAlert()
+        print("ERROR: error casting object to UIImage")
+          DispatchQueue.main.async {
+              self.errorLabel.text = "Error loading image. Try again."
+          }
+          showErrorLabel(for: &self.errorLabel)
         return
       }
 
-      // Check for and handle any errors
       if let error = error {
-        //              self?.showAlert(for: error)
+          print("ERROR: \(error.localizedDescription)")
+          errorLabel.text = error.localizedDescription
+          showErrorLabel(for: &errorLabel)
         return
-      } else {
-
-        // UI updates (like setting image on image view) should be done on main thread
-        DispatchQueue.main.async {
-
-          // Set image on preview image view
-          self?.uploadImage.image = image
-          self?.uploadImage.isHidden = false
-
-          // Set image to use when saving post
-          //                 self?.uploadImage = image
-        }
+      }
+    
+      DispatchQueue.main.async {
+        self.uploadImage.image = image
+        self.uploadImage.isHidden = false
       }
     }
   }
 }
+
+// MARK: Conform UploadViewController to UIImagePickerControllerDelegate
 
 extension UploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(
     _ picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
   ) {
-
-    // Dismiss the image picker
     picker.dismiss(animated: true)
-
-    // Get the edited image from the info dictionary (if `allowsEditing = true` for image picker config).
-    // Alternatively, to get the original image, use the `.originalImage` InfoKey instead.
     guard let image = info[.editedImage] as? UIImage else {
-      print("❌📷 Unable to get image")
+      print("ERROR: Unable to get image from camera")
+      self.errorLabel.text = "Error loading image from camera. Try again."
+        showErrorLabel(for: &errorLabel)
       return
     }
 
-    // Set image on preview image view
     uploadImage.image = image
-
-    // Set image to use when saving post
-    //        pickedImage = image
   }
 }
