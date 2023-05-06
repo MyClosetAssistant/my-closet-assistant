@@ -26,6 +26,9 @@ class LoginView: UIViewController {
     usernameErrorLabel.isHidden = true
     passwordErrorLabel.isHidden = true
     loginErrorLabel.isHidden = true
+    
+    usernameField.delegate = self
+    passwordField.delegate = self
   }
 
   @IBAction func onLoginTapped(_ sender: Any) {
@@ -82,5 +85,13 @@ class LoginView: UIViewController {
       animations: { [label] in
         label.isHidden = true
       })
+  }
+}
+
+// Conform LoginView to UITextFieldDelegate
+extension LoginView: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
   }
 }
