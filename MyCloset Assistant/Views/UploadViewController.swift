@@ -125,13 +125,17 @@ class UploadViewController: UIViewController {
       }
 
       if current.brands != nil {
-        current.brands!.append(brand)
+        if !current.brands!.contains(brand) {
+          current.brands!.append(brand)
+        }
       } else {
         current.brands = [brand]
       }
 
       if current.categories != nil {
-        current.categories!.append(category)
+        if !current.categories!.contains(category) {
+          current.categories!.append(category)
+        }
       } else {
         current.categories = [category]
       }
