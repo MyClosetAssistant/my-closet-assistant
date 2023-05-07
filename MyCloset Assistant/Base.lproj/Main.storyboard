@@ -694,8 +694,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6u-DZ-LPj">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obf-Mr-YJZ">
-                                                            <rect key="frame" x="43.333333333333329" y="54.000000000000007" width="41.333333333333329" height="20.333333333333336"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obf-Mr-YJZ">
+                                                            <rect key="frame" x="5" y="54.000000000000007" width="118" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -707,6 +707,8 @@
                                                         <constraint firstItem="obf-Mr-YJZ" firstAttribute="centerX" secondItem="e6u-DZ-LPj" secondAttribute="centerX" id="E3P-xZ-SmC"/>
                                                         <constraint firstAttribute="height" constant="128" id="X2T-w5-LV7"/>
                                                         <constraint firstItem="obf-Mr-YJZ" firstAttribute="centerY" secondItem="e6u-DZ-LPj" secondAttribute="centerY" id="X2k-sW-byZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="obf-Mr-YJZ" secondAttribute="trailing" constant="5" id="kRW-R0-yX8"/>
+                                                        <constraint firstItem="obf-Mr-YJZ" firstAttribute="leading" secondItem="e6u-DZ-LPj" secondAttribute="leading" constant="5" id="myo-sq-aBb"/>
                                                         <constraint firstAttribute="width" constant="128" id="n56-Xd-VAU"/>
                                                     </constraints>
                                                 </view>
@@ -869,8 +871,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54R-Ny-oL7">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3g-yY-v00">
-                                                            <rect key="frame" x="43" y="53.666666666666657" width="42" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3g-yY-v00">
+                                                            <rect key="frame" x="5" y="54.000000000000007" width="118" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -879,9 +881,11 @@
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstItem="P3g-yY-v00" firstAttribute="centerX" secondItem="54R-Ny-oL7" secondAttribute="centerX" id="1AH-qK-C27"/>
+                                                        <constraint firstItem="P3g-yY-v00" firstAttribute="leading" secondItem="54R-Ny-oL7" secondAttribute="leading" constant="5" id="5w3-w4-O9Y"/>
                                                         <constraint firstAttribute="height" constant="128" id="FnW-Pp-MLr"/>
                                                         <constraint firstAttribute="width" constant="128" id="Pj2-Zr-JVr"/>
                                                         <constraint firstItem="P3g-yY-v00" firstAttribute="centerY" secondItem="54R-Ny-oL7" secondAttribute="centerY" id="rxW-JZ-qK2"/>
+                                                        <constraint firstAttribute="trailing" secondItem="P3g-yY-v00" secondAttribute="trailing" constant="5" id="u9k-zi-sdD"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -1005,8 +1009,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GIW-uf-lxF"/>
-        <segue reference="Kw3-RZ-oJ3"/>
+        <segue reference="cnm-2T-Nxg"/>
+        <segue reference="iqf-Tv-YuH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="93"/>
