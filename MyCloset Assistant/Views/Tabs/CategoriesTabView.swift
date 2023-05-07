@@ -18,18 +18,17 @@ class CategoriesTabView: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.categoriesCollectionView.dataSource = self
-    User.fetchUpdatedUser(completion: {
-      print("viewDidLoad")
+    
+    User.fetchUpdatedUser {
       self.categories = $0.categories ?? []
       self.categoriesCollectionView.reloadData()
       self.updateCollectionViewLayout()
-    })
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     User.fetchUpdatedUser(completion: {
-      print("viewWillAppear")
       self.categories = $0.categories ?? []
       self.categoriesCollectionView.reloadData()
       self.updateCollectionViewLayout()

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ParseSwift
 
 class BrandsTabView: UIViewController {
 
@@ -16,10 +17,22 @@ class BrandsTabView: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     brandsCollectionView.dataSource = self
-    updateCollectionViewLayout()
-    brandsCollectionView.reloadData()
+    
+    User.fetchUpdatedUser {
+      self.brands = $0.brands ?? []
+      self.brandsCollectionView.reloadData()
+      self.updateCollectionViewLayout()
+    }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    User.fetchUpdatedUser(completion: {
+      self.brands = $0.brands ?? []
+      self.brandsCollectionView.reloadData()
+      self.updateCollectionViewLayout()
+    })
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,8 +111,8 @@ extension BrandsTabView: UICollectionViewDataSource {
 
   private func updateCollectionViewLayout() {
     let layout = brandsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    layout.minimumInteritemSpacing = 4
-    layout.minimumLineSpacing = 4
+    layout.minimumInteritemSpacing = 1
+    layout.minimumLineSpacing = 2
 
     let numberOfColumns: CGFloat = 3
     let width =
