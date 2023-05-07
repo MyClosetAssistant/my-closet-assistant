@@ -26,7 +26,7 @@ class LoginView: UIViewController {
     usernameErrorLabel.isHidden = true
     passwordErrorLabel.isHidden = true
     loginErrorLabel.isHidden = true
-    
+
     usernameField.delegate = self
     passwordField.delegate = self
   }

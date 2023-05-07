@@ -5,8 +5,8 @@
 //  Created by Leonardo Villalobos on 4/13/23.
 //
 
-import UIKit
 import ParseSwift
+import UIKit
 
 class BrandsTabView: UIViewController {
 
@@ -18,14 +18,14 @@ class BrandsTabView: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     brandsCollectionView.dataSource = self
-    
+
     User.fetchUpdatedUser {
       self.brands = $0.brands ?? []
       self.brandsCollectionView.reloadData()
       self.updateCollectionViewLayout()
     }
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     User.fetchUpdatedUser(completion: {

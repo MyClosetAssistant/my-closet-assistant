@@ -5,9 +5,9 @@
 //  Created by Violeta Robles on 5/2/23.
 //
 
+import ParseSwift
 import PhotosUI
 import UIKit
-import ParseSwift
 
 class UploadViewController: UIViewController {
 
@@ -75,7 +75,7 @@ class UploadViewController: UIViewController {
 
   @IBAction func tappedUpload(_ sender: Any) {
     view.endEditing(true)
-    
+
     let name = nameTextField.text!
     let category = categoryTextField.text!
     let brand = brandTextField.text!
@@ -103,7 +103,8 @@ class UploadViewController: UIViewController {
       return
     }
 
-    guard let image = uploadImage.image, let imageData = image.jpegData(compressionQuality: 0.1) else {
+    guard let image = uploadImage.image, let imageData = image.jpegData(compressionQuality: 0.1)
+    else {
       errorLabel.text = "An image is required."
       showErrorLabel(for: &errorLabel)
       return
@@ -115,7 +116,7 @@ class UploadViewController: UIViewController {
     item.brand = brand.capitalized
     item.categories = [category.capitalized]
     item.imageFile = ParseFile(name: "image.jpg", data: imageData)
-    
+
     User.fetchUpdatedUser(completion: {
       var current = $0
       if current.closet != nil {
@@ -174,7 +175,7 @@ class UploadViewController: UIViewController {
     sizeTextField.delegate = self
     notesTextField.delegate = self
   }
-  
+
   // MARK: Private Helpers
 
   private func showErrorLabel(for label: inout UILabel) {

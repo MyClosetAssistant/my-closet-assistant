@@ -31,7 +31,7 @@ class RegisterView: UIViewController {
     genderErrorLabel.isHidden = true
     passwordErrorLabel.isHidden = true
     registerErrorLabel.isHidden = true
-    
+
     usernameField.delegate = self
     emailField.delegate = self
     passwordField.delegate = self

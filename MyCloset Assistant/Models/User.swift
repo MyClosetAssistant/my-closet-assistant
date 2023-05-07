@@ -37,7 +37,7 @@ extension User {
     self.password = password
     self.gender = gender
   }
-  
+
   static func fetchUpdatedUser(completion: @escaping (User) -> Void) {
     User.query().includeAll().where("objectId" == User.current!.id).limit(1).find {
       switch $0 {
