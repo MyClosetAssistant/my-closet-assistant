@@ -5,6 +5,7 @@
 //  Created by Violeta Robles on 5/2/23.
 //
 
+import ParseSwift
 import PhotosUI
 import UIKit
 
@@ -73,6 +74,8 @@ class UploadViewController: UIViewController {
   }
 
   @IBAction func tappedUpload(_ sender: Any) {
+    view.endEditing(true)
+
     let name = nameTextField.text!
     let category = categoryTextField.text!
     let brand = brandTextField.text!
@@ -100,22 +103,64 @@ class UploadViewController: UIViewController {
       return
     }
 
-    // TODO: Image is required
-    // TODO: Image as ParseFile
+    guard let image = uploadImage.image, let imageData = image.jpegData(compressionQuality: 0.1)
+    else {
+      errorLabel.text = "An image is required."
+      showErrorLabel(for: &errorLabel)
+      return
+    }
 
     hideErrorLabel(for: &errorLabel)
 
     var item = ClosetItem(name: name.capitalized, image: nil, size: size.uppercased(), notes: notes)
     item.brand = brand.capitalized
     item.categories = [category.capitalized]
-    item.save { result in
-      switch result {
-      case .success(let item):
-        print("Saved item with name \(item.name!)")
-      case .failure(let error):
-        print("Error: \(error.localizedDescription)")
+    item.imageFile = ParseFile(name: "image.jpg", data: imageData)
+
+    User.fetchUpdatedUser(completion: {
+      var current = $0
+      if current.closet != nil {
+        current.closet!.append(item)
+      } else {
+        current.closet = [item]
       }
-    }
+
+      if current.brands != nil {
+        if !current.brands!.contains(brand) {
+          current.brands!.append(brand)
+        }
+      } else {
+        current.brands = [brand]
+      }
+
+      if current.categories != nil {
+        if !current.categories!.contains(category) {
+          current.categories!.append(category)
+        }
+      } else {
+        current.categories = [category]
+      }
+
+      DispatchQueue.main.async {
+        current.save { [unowned self] result in
+          switch result {
+          case .success(let user):
+            print("INFO: Updated user with ID = \(user.id)")
+            print("INFO: brands = \(user.brands!)")
+            print("INFO: categories = \(user.brands!)")
+
+            DispatchQueue.main.async {
+              self.navigationController?.popViewController(animated: true)
+            }
+
+          case .failure(let error):
+            print("ERROR: \(error.localizedDescription)")
+            self.errorLabel.text = error.localizedDescription
+            self.showErrorLabel(for: &self.errorLabel)
+          }
+        }
+      }
+    })
   }
 
   // MARK: Overloads
@@ -224,5 +269,6 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
 
     uploadImage.image = image
+    uploadImage.isHidden = false
   }
 }

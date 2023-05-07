@@ -5,21 +5,34 @@
 //  Created by Leonardo Villalobos on 4/13/23.
 //
 
+import ParseSwift
 import UIKit
 
 class CategoriesTabView: UIViewController {
 
-  var categories: [String] = User.current!.categories ?? []
+  var categories = User.current!.categories ?? []
   @IBOutlet weak var categoriesCollectionView: UICollectionView!
 
   // MARK: Overrides
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.categoriesCollectionView.dataSource = self
 
-    categoriesCollectionView.dataSource = self
-    updateCollectionViewLayout()
-    categoriesCollectionView.reloadData()
+    User.fetchUpdatedUser {
+      self.categories = $0.categories ?? []
+      self.categoriesCollectionView.reloadData()
+      self.updateCollectionViewLayout()
+    }
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    User.fetchUpdatedUser(completion: {
+      self.categories = $0.categories ?? []
+      self.categoriesCollectionView.reloadData()
+      self.updateCollectionViewLayout()
+    })
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,8 +113,8 @@ extension CategoriesTabView: UICollectionViewDataSource {
 
   private func updateCollectionViewLayout() {
     let layout = categoriesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    layout.minimumInteritemSpacing = 4
-    layout.minimumLineSpacing = 4
+    layout.minimumInteritemSpacing = 1
+    layout.minimumLineSpacing = 2
 
     let numberOfColumns: CGFloat = 3
     let width =

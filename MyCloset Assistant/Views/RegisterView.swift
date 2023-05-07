@@ -32,6 +32,10 @@ class RegisterView: UIViewController {
     passwordErrorLabel.isHidden = true
     registerErrorLabel.isHidden = true
 
+    usernameField.delegate = self
+    emailField.delegate = self
+    passwordField.delegate = self
+
     // Customize the appearance of the pullDownButton
     genderButton.layer.cornerRadius = 5
     genderButton.layer.borderWidth = 0.5
@@ -139,4 +143,12 @@ class RegisterView: UIViewController {
       })
   }
 
+}
+
+// Conform RegisterView to UITextFieldDelegate
+extension RegisterView: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
 }

@@ -37,4 +37,17 @@ extension User {
     self.password = password
     self.gender = gender
   }
+
+  static func fetchUpdatedUser(completion: @escaping (User) -> Void) {
+    User.query().includeAll().where("objectId" == User.current!.id).limit(1).find {
+      switch $0 {
+      case .success(let user):
+        let user = user[0]
+        print("INFO: Fetched user \(user.id)")
+        completion(user)
+      case .failure(let error):
+        print("FATAL: Unable to fetch current user: \(error.localizedDescription)")
+      }
+    }
+  }
 }
