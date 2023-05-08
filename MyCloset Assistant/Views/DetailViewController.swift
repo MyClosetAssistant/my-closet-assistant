@@ -12,36 +12,37 @@ import UIKit
 class DetailViewController: UIViewController {
 
   var thisItem: ClosetItem!
+  
   @IBOutlet weak var itemImageView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var categoryLabel: UILabel!
   @IBOutlet weak var brandLabel: UILabel!
   @IBOutlet weak var sizeLabel: UILabel!
   @IBOutlet weak var notesLabel: UILabel!
+  
+  private var imageDataRequest: DataRequest?
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    if let imageFile = thisItem.imageFile, let imageUrl = imageFile.url {
-      _ = AF.request(imageUrl).responseImage { [unowned self] response in
-        switch response.result {
-        case .success(let image):
-          DispatchQueue.main.async { self.itemImageView.image = image }
-        case .failure(let error):
-          print(error)
-          break
+    itemImageView.image = configureImage(with: thisItem)
+  }
+  
+  func configureImage(with item: ClosetItem) -> UIImage? {
+    var result: UIImage? = nil
+    if let imageFile = item.imageFile,
+        let imageUrl = imageFile.url {
+        imageDataRequest = AF.request(imageUrl).responseImage { response in
+            switch response.result {
+            case .success(let image):
+                result = image
+            case .failure(let error):
+                print("ERROR: Couldn't load image: \(error.localizedDescription)")
+            }
         }
-      }
     }
-
-    nameLabel.text = thisItem.name
-    categoryLabel.text = thisItem.categories![0]
-    brandLabel.text = thisItem.brand
-    sizeLabel.text = thisItem.size
-    notesLabel.text = thisItem.notes
+    return result
   }
 
-  //    Delete Item function
   @IBAction func deleteItem(_ sender: Any) {
     var i = 0
     User.fetchUpdatedUser(completion: { [thisItem] in
@@ -54,15 +55,26 @@ class DetailViewController: UIViewController {
         i += 1
       }
       thisItem!.delete {
-        switch $0
-        {
-
+        switch $0 {
         case .success():
-          print("Item successfully deleted!")
+          print("INFO: Item deleted")
         case .failure(let error):
           print(error.localizedDescription)
         }
       }
     })
+  }
+  
+  private func loadImageFromParseAnd(do callback: @escaping (UIImage) -> Void) {
+    if let imageFile = thisItem.imageFile, let imageUrl = imageFile.url {
+      _ = AF.request(imageUrl).responseImage { response in
+        switch response.result {
+        case .success(let image):
+          callback(image)
+        case .failure(let error):
+          print("WARN: Couldn't load image: \(error.localizedDescription)")
+        }
+      }
+    }
   }
 }
