@@ -28,6 +28,7 @@
 		52C7375C29E8E22B00266ADE /* BrandsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7375B29E8E22B00266ADE /* BrandsTabView.swift */; };
 		52C7375F29EA16C400266ADE /* BrandsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7375E29EA16C400266ADE /* BrandsTableCell.swift */; };
 		52C7376129EA2CC100266ADE /* CategoriesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7376029EA2CC100266ADE /* CategoriesTableCell.swift */; };
+		66C6066F2A060D3200044DFB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C6066E2A060D3200044DFB /* DetailViewController.swift */; };
 		66EE28F92A0198F000F85964 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE28F82A0198F000F85964 /* UploadViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		52C7375B29E8E22B00266ADE /* BrandsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsTabView.swift; sourceTree = "<group>"; };
 		52C7375E29EA16C400266ADE /* BrandsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsTableCell.swift; sourceTree = "<group>"; };
 		52C7376029EA2CC100266ADE /* CategoriesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableCell.swift; sourceTree = "<group>"; };
+		66C6066E2A060D3200044DFB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		66EE28F82A0198F000F85964 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				66EE28F82A0198F000F85964 /* UploadViewController.swift */,
 				52C7374F29E8A12100266ADE /* RegisterView.swift */,
 				52C2887129EF197900D9C7E0 /* ResultsView.swift */,
+				66C6066E2A060D3200044DFB /* DetailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				52C7375C29E8E22B00266ADE /* BrandsTabView.swift in Sources */,
 				52C2887429EFA1BE00D9C7E0 /* ItemCell.swift in Sources */,
 				52BAFC8829E512FC0013A991 /* LoginView.swift in Sources */,
+				66C6066F2A060D3200044DFB /* DetailViewController.swift in Sources */,
 				52C7374429E5F58100266ADE /* Secrets.swift in Sources */,
 				52BAFC8429E512FC0013A991 /* AppDelegate.swift in Sources */,
 				52C7375F29EA16C400266ADE /* BrandsTableCell.swift in Sources */,
