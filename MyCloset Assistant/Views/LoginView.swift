@@ -26,7 +26,6 @@ class LoginView: UIViewController {
     usernameErrorLabel.isHidden = true
     passwordErrorLabel.isHidden = true
     loginErrorLabel.isHidden = true
-
     usernameField.delegate = self
     passwordField.delegate = self
   }
@@ -36,35 +35,32 @@ class LoginView: UIViewController {
     let password = passwordField!.text!
 
     if username.isEmpty {
-      usernameErrorLabel.text = "'Username' field must be filled out"
+      usernameErrorLabel.text = "Username is required"
       showErrorLabel(for: &usernameErrorLabel)
+    } else {
+      hideErrorLabel(for: &usernameErrorLabel)
     }
     if password.isEmpty {
-      passwordErrorLabel.text = "'Password' field must be filled out"
+      passwordErrorLabel.text = "Password is required"
       showErrorLabel(for: &passwordErrorLabel)
+    } else {
+      hideErrorLabel(for: &passwordErrorLabel)
     }
 
     User.login(username: username, password: password) { [unowned self] result in
-      if !username.isEmpty {
-        self.hideErrorLabel(for: &usernameErrorLabel)
-      }
-      if !password.isEmpty {
-        self.hideErrorLabel(for: &passwordErrorLabel)
-      }
-
       switch result {
       case .success(let user):
+        print("INFO: Logged in as user \(user.username!)")
         loadingIndicator.isHidden = false
-        print("Logged in as user: \(user)")
-        self.hideErrorLabel(for: &loginErrorLabel)
+        hideErrorLabel(for: &loginErrorLabel)
         queue.asyncAfter(
           deadline: .now() + 0.5,
           execute: {
             NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
           })
       case .failure(let error):
-        self.loginErrorLabel.text = error.message.capitalized
-        self.showErrorLabel(for: &self.loginErrorLabel)
+        loginErrorLabel.text = error.message.capitalized
+        showErrorLabel(for: &self.loginErrorLabel)
       }
     }
   }

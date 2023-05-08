@@ -31,6 +31,7 @@ struct User: ParseUser {
 }
 
 extension User {
+  
   init(username: String, email: String, password: String, gender: Gender) {
     self.username = username
     self.email = email
@@ -50,4 +51,5 @@ extension User {
       }
     }
   }
+  
 }

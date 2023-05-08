@@ -31,12 +31,10 @@ class RegisterView: UIViewController {
     genderErrorLabel.isHidden = true
     passwordErrorLabel.isHidden = true
     registerErrorLabel.isHidden = true
-
     usernameField.delegate = self
     emailField.delegate = self
     passwordField.delegate = self
 
-    // Customize the appearance of the pullDownButton
     genderButton.layer.cornerRadius = 5
     genderButton.layer.borderWidth = 0.5
     genderButton.layer.borderColor = UIColor.systemGray4.cgColor
@@ -73,6 +71,8 @@ class RegisterView: UIViewController {
   }
 
   @IBAction func OnRegisterTapped(_ sender: Any) {
+    print("INFO: Tapped on Register")
+    
     let username = usernameField.text!
     let email = emailField.text!
     let password = passwordField.text!
@@ -107,7 +107,7 @@ class RegisterView: UIViewController {
     newUser.signup { [unowned self] result in
       switch result {
       case .success(let user):
-        print("Signed up user: \(user)")
+        print("INFO: Signed up user: \(user.username!)")
         self.hideErrorLabel(for: &registerErrorLabel)
         queue.asyncAfter(
           deadline: .now() + 0.5,
@@ -115,10 +115,12 @@ class RegisterView: UIViewController {
             NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
           })
       case .failure(let error):
+        print("FATAL: Couldn't signup: \(error.localizedDescription)")
         self.registerErrorLabel.text = error.message.capitalized
         self.showErrorLabel(for: &self.registerErrorLabel)
       }
     }
+    
   }
 
   @IBAction func didTapCancel(_ sender: UIBarButtonItem) {

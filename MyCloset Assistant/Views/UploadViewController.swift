@@ -22,7 +22,8 @@ class UploadViewController: UIViewController {
   // MARK: IBActions
 
   @IBAction func tappedCamera(_ sender: Any) {
-    print("Tapped Camera")
+    print("INFO: Tapped camera button")
+    
     guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
       print("ERROR: Camera not available")
       errorLabel.text = "Camera unavailable. Please try again."
@@ -30,50 +31,30 @@ class UploadViewController: UIViewController {
       return
     }
 
-    // Instantiate the image picker
     let imagePicker = UIImagePickerController()
-
-    // Shows the camera (vs the photo library)
     imagePicker.sourceType = .camera
-
-    // Allows user to edit image within image picker flow (i.e. crop, etc.)
-    // If you don't want to allow editing, you can leave out this line as the default value of `allowsEditing` is false
     imagePicker.allowsEditing = true
-
-    // The image picker (camera in this case) will return captured photos via it's delegate method to it's assigned delegate.
-    // Delegate assignee must conform and implement both `UIImagePickerControllerDelegate` and `UINavigationControllerDelegate`
     imagePicker.delegate = self
-
-    // Present the image picker (camera)
+    
     present(imagePicker, animated: true)
-
   }
 
   @IBAction func tappedGallery(_ sender: Any) {
-    print("Tapped Gallery")
-    // Create a configuration object
+    print("INFO: Tapped gallery button")
+    
     var config = PHPickerConfiguration()
-
-    // Set the filter to only show images as options (i.e. no videos, etc.).
     config.filter = .images
-
-    // Request the original file format. Fastest method as it avoids transcoding.
     config.preferredAssetRepresentationMode = .current
-
-    // Only allow 1 image to be selected at a time.
     config.selectionLimit = 1
-
-    // Instantiate a picker, passing in the configuration.
+    
     let picker = PHPickerViewController(configuration: config)
-
-    // Set the picker delegate so we can receive whatever image the user picks.
     picker.delegate = self
 
-    // Present the picker
     present(picker, animated: true)
   }
 
   @IBAction func tappedUpload(_ sender: Any) {
+    print("INFO: Tapped upload button")
     view.endEditing(true)
 
     let name = nameTextField.text!
@@ -117,7 +98,7 @@ class UploadViewController: UIViewController {
     item.categories = [category.capitalized]
     item.imageFile = ParseFile(name: "image.jpg", data: imageData)
 
-    User.fetchUpdatedUser(completion: {
+    User.fetchUpdatedUser {
       var current = $0
       if current.closet != nil {
         current.closet!.append(item)
@@ -146,21 +127,19 @@ class UploadViewController: UIViewController {
           switch result {
           case .success(let user):
             print("INFO: Updated user with ID = \(user.id)")
-            print("INFO: brands = \(user.brands!)")
-            print("INFO: categories = \(user.brands!)")
-
             DispatchQueue.main.async {
               self.navigationController?.popViewController(animated: true)
             }
 
           case .failure(let error):
-            print("ERROR: \(error.localizedDescription)")
+            print("FATAL: Unable to update current user: \(error.localizedDescription)")
             self.errorLabel.text = error.localizedDescription
             self.showErrorLabel(for: &self.errorLabel)
           }
         }
       }
-    })
+    
+    }
   }
 
   // MARK: Overloads
@@ -223,6 +202,7 @@ extension UploadViewController: PHPickerViewControllerDelegate {
 
     guard let provider = results.first?.itemProvider, provider.canLoadObject(ofClass: UIImage.self)
     else {
+      print("ERROR: Couldn't pick an image")
       errorLabel.text = "An error occurred. Try again."
       showErrorLabel(for: &errorLabel)
       return
@@ -230,7 +210,7 @@ extension UploadViewController: PHPickerViewControllerDelegate {
 
     provider.loadObject(ofClass: UIImage.self) { [unowned self] object, error in
       guard let image = object as? UIImage else {
-        print("ERROR: error casting object to UIImage")
+        print("ERROR: Couldn't cast to UIImage")
         DispatchQueue.main.async {
           self.errorLabel.text = "Error loading image. Try again."
         }
@@ -239,7 +219,7 @@ extension UploadViewController: PHPickerViewControllerDelegate {
       }
 
       if let error = error {
-        print("ERROR: \(error.localizedDescription)")
+        print("ERROR: Couldn't load object: \(error.localizedDescription)")
         errorLabel.text = error.localizedDescription
         showErrorLabel(for: &errorLabel)
         return
@@ -250,6 +230,7 @@ extension UploadViewController: PHPickerViewControllerDelegate {
         self.uploadImage.isHidden = false
       }
     }
+    
   }
 }
 
