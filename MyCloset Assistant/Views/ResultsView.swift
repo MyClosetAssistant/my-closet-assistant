@@ -21,23 +21,23 @@ class ResultsView: UIViewController {
     itemsTableView.dataSource = self
     itemsTableView.reloadData()
   }
-    
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the cell that triggered the segue
-        if let cell = sender as? UITableViewCell,
-           // Get the index path of the cell from the table view
-           let indexPath = itemsTableView.indexPath(for: cell),
-           // Get the detail view controller
-           let detailViewController = segue.destination as? DetailViewController {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the cell that triggered the segue
+    if let cell = sender as? UITableViewCell,
+      // Get the index path of the cell from the table view
+      let indexPath = itemsTableView.indexPath(for: cell),
+      // Get the detail view controller
+      let detailViewController = segue.destination as? DetailViewController
+    {
 
-            // Use the index path to get the associated track
-            let item = items[indexPath.row]
-//
-//            // Set the track on the detail view controller
-            detailViewController.thisItem = item
-        }
+      // Use the index path to get the associated track
+      let item = items[indexPath.row]
+      //
+      //            // Set the track on the detail view controller
+      detailViewController.thisItem = item
     }
+  }
 }
 
 // MARK: Conform ResultsView to UITableViewDataSource

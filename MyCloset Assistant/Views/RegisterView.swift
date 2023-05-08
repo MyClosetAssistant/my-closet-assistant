@@ -72,7 +72,7 @@ class RegisterView: UIViewController {
 
   @IBAction func OnRegisterTapped(_ sender: Any) {
     print("INFO: Tapped on Register")
-    
+
     let username = usernameField.text!
     let email = emailField.text!
     let password = passwordField.text!
@@ -120,7 +120,7 @@ class RegisterView: UIViewController {
         self.showErrorLabel(for: &self.registerErrorLabel)
       }
     }
-    
+
   }
 
   @IBAction func didTapCancel(_ sender: UIBarButtonItem) {

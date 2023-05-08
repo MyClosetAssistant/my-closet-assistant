@@ -23,7 +23,7 @@ class UploadViewController: UIViewController {
 
   @IBAction func tappedCamera(_ sender: Any) {
     print("INFO: Tapped camera button")
-    
+
     guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
       print("ERROR: Camera not available")
       errorLabel.text = "Camera unavailable. Please try again."
@@ -35,18 +35,18 @@ class UploadViewController: UIViewController {
     imagePicker.sourceType = .camera
     imagePicker.allowsEditing = true
     imagePicker.delegate = self
-    
+
     present(imagePicker, animated: true)
   }
 
   @IBAction func tappedGallery(_ sender: Any) {
     print("INFO: Tapped gallery button")
-    
+
     var config = PHPickerConfiguration()
     config.filter = .images
     config.preferredAssetRepresentationMode = .current
     config.selectionLimit = 1
-    
+
     let picker = PHPickerViewController(configuration: config)
     picker.delegate = self
 
@@ -138,7 +138,7 @@ class UploadViewController: UIViewController {
           }
         }
       }
-    
+
     }
   }
 
@@ -230,7 +230,7 @@ extension UploadViewController: PHPickerViewControllerDelegate {
         self.uploadImage.isHidden = false
       }
     }
-    
+
   }
 }
 
