@@ -86,7 +86,9 @@
                                         <rect key="frame" x="29.999999999999986" y="288" width="222.66666666666663" height="34.333333333333314"/>
                                         <color key="tintColor" red="0.5725490196078431" green="0.69803921568627447" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Login">
+                                            <color key="baseBackgroundColor" red="0.5725490196078431" green="0.69803921568627447" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="onLoginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pWN-6T-HHT"/>
                                         </connections>
@@ -311,7 +313,9 @@
                                         <rect key="frame" x="0.0" y="25.333333333333261" width="193" height="34.333333333333343"/>
                                         <color key="tintColor" red="0.67843137254901964" green="0.49803921568627452" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Upload"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Upload">
+                                            <color key="baseBackgroundColor" red="0.67843137254901964" green="0.49803921568627452" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="tappedUpload:" destination="mZ8-h2-XzV" eventType="touchUpInside" id="Tot-e4-kSx"/>
                                         </connections>
@@ -646,7 +650,9 @@
                                         <rect key="frame" x="0.0" y="407.66666666666663" width="265" height="34.333333333333314"/>
                                         <color key="tintColor" red="0.5725490196078431" green="0.69803921568627447" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Register"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Register">
+                                            <color key="baseBackgroundColor" red="0.5725490196078431" green="0.69803921568627447" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="OnRegisterTapped:" destination="Hsc-7e-bxW" eventType="touchUpInside" id="vk2-XC-K8W"/>
                                         </connections>
@@ -961,7 +967,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="0.67843137254901964" green="0.49803921568627452" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.96078431369999995" green="0.58039215690000001" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
