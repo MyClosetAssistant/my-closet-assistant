@@ -64,7 +64,7 @@ MyCloset Assistant is an app that helps users categorize andstore their closet i
 
 **App Architecture**
 
-<img src="assets/images/app-flow.png" width=600>
+<img src="assets/images/app-architecture.png" width=600>
 
 ## Models
 ### Gender
