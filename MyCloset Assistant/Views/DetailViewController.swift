@@ -18,13 +18,25 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var categoryLabel: UILabel!
   @IBOutlet weak var brandLabel: UILabel!
   @IBOutlet weak var sizeLabel: UILabel!
+  
   @IBOutlet weak var notesLabel: UILabel!
+  @IBOutlet weak var notesTextLabel: UILabel!
   
   private var imageDataRequest: DataRequest?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     itemImageView.image = configureImage(with: thisItem)
+    nameLabel.text = thisItem.name
+    categoryLabel.text = thisItem.categories![0]
+    brandLabel.text = thisItem.brand
+    sizeLabel.text = thisItem.size
+    if let notes = thisItem.notes {
+      notesLabel.text = notes
+    } else {
+      notesLabel.isHidden = true
+      notesTextLabel.isHidden = true
+    }
   }
   
   func configureImage(with item: ClosetItem) -> UIImage? {

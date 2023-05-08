@@ -506,6 +506,7 @@
                         <outlet property="itemImageView" destination="6DL-uT-dkf" id="Sd0-cM-YOz"/>
                         <outlet property="nameLabel" destination="6Zk-ju-4BW" id="dKR-JX-xic"/>
                         <outlet property="notesLabel" destination="Sp0-Le-h4V" id="rnG-OF-Bey"/>
+                        <outlet property="notesTextLabel" destination="DNd-WB-EWq" id="HHZ-lz-2qE"/>
                         <outlet property="sizeLabel" destination="lwb-s6-dQi" id="c11-oi-Njk"/>
                     </connections>
                 </viewController>
